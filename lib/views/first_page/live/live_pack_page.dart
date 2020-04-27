@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutterapp/model/live_class.dart';
+import 'package:flutterapp/model/live_top.dart';
+import 'package:flutterapp/model/page.dart';
+import 'package:flutterapp/utils/data_utils.dart';
 import 'package:flutterapp/views/first_page/live/live_top_page.dart';
 
 class LivePackPage extends StatefulWidget {
@@ -9,38 +13,50 @@ class LivePackPage extends StatefulWidget {
 }
 
 class _LivePackPage extends State<LivePackPage> {
+
+  List<BannerListBean> _bannerList;
+
+  LivingBean _living;
+
+  Page _page;
+
+  List<dynamic> _list;
+
+  @override
+  void initState() {
+    super.initState();
+
+    DataUtils.getLiveTop().then((r) {
+      setState(() {
+        _bannerList = r.bannerList;
+        _living = r.living;
+      });
+    });
+
+    DataUtils.getLiveList(1, 10, 0, 0).then((r) {
+      setState(() {
+        _page = r;
+        _list = _page.dataList;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new RefreshIndicator(
       color: Color.fromRGBO(244, 245, 247, 1),
       child: new ListView(
         children: <Widget>[
-          new Container(
-            child: new Container(
-              child: new Swiper(
-                itemWidth: MediaQuery.of(context).size.width,
-                itemHeight: 212,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  return new Image.network(
-                    "https://lianks-picture-uat.oss-cn-beijing.aliyuncs.com/lianks-images/20200420/de2c7d11-0898-4e88-bd2c-28b25524e862.png",
-                    fit: BoxFit.fitHeight,
-                  );
-                },
-                pagination: new SwiperPagination(),
-                control: new SwiperControl(),
-              ),
-              height: 212,
-            ),
-          ),
-          new Container(
+          _bannerView(),
+          null != _living ? new Container(
             height: 24,
             margin: EdgeInsets.only(top: 4),
             child: new LivingLabel(),
-          ),
-          new Container(
+          ) : new Container(),
+          null != _living ? new Container(
             height: 90,
-            child: new LivingClass()),
+            child: new LivingClass(LiveClass.fromLivingBean(_living))
+          ) : new Container(),
           new Container(
             margin: EdgeInsets.only(top: 12),
             color: Color.fromRGBO(255, 255, 255, 1),
@@ -58,10 +74,48 @@ class _LivePackPage extends State<LivePackPage> {
               ),
             )
           ),
+          new Container(
+            height: 85,
+            child: new Container(
+              child: new Row(
+                children: <Widget>[
+
+                ],
+              ),
+            ),
+          ),
+          new Container(child: new Text("5"),),
+          new Container(child: new Text("5"),),
+          new Container(child: new Text("5"),),
+          new Container(child: new Text("5"),),
         ],
       ),
       onRefresh: _handleRefresh,
     );
+  }
+
+  Widget _bannerView() {
+    if(_bannerList != null) {
+      return new Container(
+        child: new Container(
+          child: new Swiper(
+            itemWidth: MediaQuery.of(context).size.width,
+            itemHeight: 212,
+            itemCount: _bannerList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return new Image.network(
+                _bannerList[index].imgUrl,
+                fit: BoxFit.fitHeight,
+              );
+            },
+            pagination: new SwiperPagination(),
+            control: new SwiperControl(),
+          ),
+          height: 212,
+        ),
+      );
+    }
+    return new Container();
   }
 
   Future<Null> _handleRefresh() async {
