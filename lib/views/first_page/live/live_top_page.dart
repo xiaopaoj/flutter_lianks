@@ -23,7 +23,7 @@ class _LiveTopPage extends State<LiveTopPage> {
               itemBuilder: (BuildContext context, int index) {
                 return new Image.network(
                   "https://lianks-picture-uat.oss-cn-beijing.aliyuncs.com/lianks-images/20200420/de2c7d11-0898-4e88-bd2c-28b25524e862.png",
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.fill,
                 );
               },
               pagination: new SwiperPagination(),
@@ -81,6 +81,7 @@ class _LivingClass extends State<LivingClass> {
                   child: new Image.network(widget.liveClass.showImage,
                     width: 112,
                     height: 63,
+                    fit: BoxFit.fill,
                   ),
                   margin: EdgeInsets.only(left: 12, top: 12, right: 0, bottom: 12),
                 ),

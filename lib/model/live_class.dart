@@ -37,16 +37,16 @@ class LiveClass {
     liveClass.teacherName = map['teacherName'];
     liveClass.tagName = map['tagName'];
     liveClass.firstLabel = map['productName'];
-    if(int.parse(map['isPack']) == 0) {
+    if(map['isPack'] == 0) {
       liveClass.secondLabel = map['packName'];
     } else {
       liveClass.secondLabel = map['updatedCount'] + "  " + map['planCount'];
     }
 
-    liveClass.thirdLabel = map['dateTimeStr'] + "   " + map['livingBean.payCount'] +  "人报名";
+    liveClass.thirdLabel = map['dateTimeStr'] + "   " + map['payCount'].toString() +  "人报名";
     liveClass.originalPrice = map['originalPrice'];
     liveClass.standardPrice = map['standardPrice'];
-    liveClass.detailUrl = map['livingBean.detailUrl'];
+    liveClass.detailUrl = map['detailUrl'];
     return liveClass;
   }
 
