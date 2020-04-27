@@ -14,17 +14,36 @@ class LivePackPage extends StatefulWidget {
 
 class _LivePackPage extends State<LivePackPage> {
 
+  ScrollController _scrollController = new ScrollController();
+
   List<BannerListBean> _bannerList;
 
   LivingBean _living;
 
   Page _page;
 
-  List<dynamic> _list;
+  int _pageNum = 1;
+
+  int _pageSize = 3;
+
+  List<dynamic> _list = [];
 
   @override
   void initState() {
     super.initState();
+
+    _scrollController.addListener(() {
+      print(_scrollController.position.pixels.toString() + "   " + _scrollController.position.maxScrollExtent.toString());
+      if (_scrollController.position.pixels >
+          _scrollController.position.maxScrollExtent) {
+        if(null == _page ||
+            _page.pages > _pageNum) {
+            _pageNum = _pageNum + 1;
+          _getList();
+
+        }
+      }
+    });
 
     DataUtils.getLiveTop().then((r) {
       setState(() {
@@ -33,10 +52,14 @@ class _LivePackPage extends State<LivePackPage> {
       });
     });
 
-    DataUtils.getLiveList(1, 10, 0, 0).then((r) {
+    _getList();
+  }
+
+  void _getList() async {
+    DataUtils.getLiveList(_pageNum, _pageSize, 0, 0).then((r) {
       setState(() {
         _page = r;
-        _list = _page.dataList;
+        _list.addAll(_page.dataList);
       });
     });
   }
@@ -46,6 +69,8 @@ class _LivePackPage extends State<LivePackPage> {
     return new RefreshIndicator(
       color: Color.fromRGBO(244, 245, 247, 1),
       child: new CustomScrollView(
+        physics: new AlwaysScrollableScrollPhysics(),
+        controller: _scrollController,
         slivers: <Widget>[
           new SliverToBoxAdapter(
             child: new Container(
@@ -67,7 +92,7 @@ class _LivePackPage extends State<LivePackPage> {
             null != _living ? new Container(
               height: 90,
               margin: EdgeInsets.only(top: 4),
-                child: new LivingClass(LiveClass.fromLivingBean(_living)),
+              child: new LivingClass(LiveClass.fromLivingBean(_living)),
             ) : new Container(),
           ),
 
@@ -94,8 +119,9 @@ class _LivePackPage extends State<LivePackPage> {
           null != _list ?
           new SliverList(
             delegate: new SliverChildBuilderDelegate(
-              (context, index) {
-                return new LivingClass(LiveClass.fromLiveListApi(_list[index]));
+                  (context, index) {
+                return new LivingClass(
+                    LiveClass.fromLiveListApi(_list[index]));
               },
               childCount: _list.length,
             ),
@@ -103,52 +129,6 @@ class _LivePackPage extends State<LivePackPage> {
 
         ],
       ),
-
-//      new ListView(
-//        children: <Widget>[
-//          _bannerView(),
-//          null != _living ? new Container(
-//            height: 24,
-//            margin: EdgeInsets.only(top: 4),
-//            child: new LivingLabel(),
-//          ) : new Container(),
-//          null != _living ? new Container(
-//            height: 90,
-//            child: new LivingClass(LiveClass.fromLivingBean(_living))
-//          ) : new Container(),
-//          new Container(
-//            margin: EdgeInsets.only(top: 12),
-//            color: Color.fromRGBO(255, 255, 255, 1),
-//            child: new Container(
-//              width: 90,
-//              height: 25,
-//              margin: EdgeInsets.only(top: 16, bottom: 13, left: 12),
-//              child: new Text("系列课列表",
-//                style: new TextStyle(
-//                  fontSize: 18,
-//                  color: Color.fromRGBO(0, 0, 0, 1),
-//                  //字体粗细  粗体和正常
-//                  fontWeight: FontWeight.w400,
-//                ),
-//              ),
-//            )
-//          ),
-//          new Container(
-//            height: 85,
-//            child: new Container(
-//              child: new Row(
-//                children: <Widget>[
-//
-//                ],
-//              ),
-//            ),
-//          ),
-//          new Container(child: new Text("5"),),
-//          new Container(child: new Text("5"),),
-//          new Container(child: new Text("5"),),
-//          new Container(child: new Text("5"),),
-//        ],
-//      ),
       onRefresh: _handleRefresh,
     );
   }
@@ -178,5 +158,12 @@ class _LivePackPage extends State<LivePackPage> {
   }
 
   Future<Null> _handleRefresh() async {
+
+    await Future.delayed(Duration(seconds: 1), () {
+      _pageNum = 1;
+      _list = [];
+      _getList();
+    });
+
   }
 }
