@@ -6,6 +6,8 @@ import 'package:flutterapp/utils/net_utils.dart';
 
 class DataUtils {
 
+  static String token = "eyJhbGciOiJIUzI1NiJ9.eyJyZWFsTmFtZSI6IiIsIm5pY2tOYW1lIjoi5aSp5aSW6aOe5LuZIiwiZ2VuZXJhdGVUaW1lIjoxNTg3OTgwNTEwMjQ0LCJ0b2tlblR5cGUiOiJjdXN0b21lciIsImV4cCI6MTYwMzUzMjUxMCwidXNlcklkIjo1ODAyNjkyNDc5MTQwNTA3OTYsInBsYXRmb3JtIjoxfQ.pSVwiWvzyepIUucHs-t3ip-dXMALRs8Q1YwjwYS-HuI";
+
   static Future<LiveTopModel> getLiveTop() async {
     var response = await NetUtils.get(Api.LIVE_TOP);
     try {
