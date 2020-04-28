@@ -5,7 +5,8 @@ import 'package:flutterapp/model/live_class.dart';
 import 'package:flutterapp/model/live_top.dart';
 import 'package:flutterapp/model/page.dart';
 import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/first_page/live/live_top_page.dart';
+import 'package:flutterapp/views/live/live_class_page.dart';
+import 'package:flutterapp/views/live/live_top_page.dart';
 
 class LivePackPage extends StatefulWidget {
   @override
@@ -92,7 +93,7 @@ class _LivePackPage extends State<LivePackPage> {
             null != _living ? new Container(
               height: 90,
               margin: EdgeInsets.only(top: 4),
-              child: new LivingClass(LiveClass.fromLivingBean(_living)),
+              child: new LivingClassPage(LiveClass.fromLivingBean(_living, "直播课详情")),
             ) : new Container(),
           ),
 
@@ -120,8 +121,8 @@ class _LivePackPage extends State<LivePackPage> {
           new SliverList(
             delegate: new SliverChildBuilderDelegate(
                   (context, index) {
-                return new LivingClass(
-                    LiveClass.fromLiveListApi(_list[index]));
+                return new LivingClassPage(
+                    LiveClass.fromLiveListApi(_list[index], "系列课详情"));
               },
               childCount: _list.length,
             ),

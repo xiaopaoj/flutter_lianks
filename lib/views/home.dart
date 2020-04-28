@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterapp/model/user_info.dart';
-import 'package:flutterapp/views/first_page/main_page.dart';
+import 'package:flutterapp/views/main_page.dart';
 
 class AppHomePage extends StatefulWidget {
 
@@ -28,17 +28,17 @@ class _AppHomePage extends State<AppHomePage>
       'icon': "icon_zhibo@3x.png"
     },
     {
-      'text': '关于手册',
+      'text': '课程',
       'color': Colors.black,
       'icon': "icon_kecheng@3x.png"
     },
     {
-      'text': '个人中心',
+      'text': '导师',
       'color': Colors.red,
       'icon': "icon_daoshi@3x.png"
     },
     {
-      'text': '个人中心',
+      'text': '我的',
       'color': Colors.yellow,
       'icon': "icon_wode@3x.png"
     },

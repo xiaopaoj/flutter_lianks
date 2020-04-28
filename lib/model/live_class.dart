@@ -5,6 +5,7 @@ import 'package:flutterapp/model/live_top.dart';
 
 class LiveClass {
 
+  String title;
   String showImage;
   String teacherName;
   String tagName;
@@ -15,7 +16,7 @@ class LiveClass {
   String standardPrice;
   String detailUrl;
 
-  static LiveClass fromLivingBean(LivingBean livingBean){
+  static LiveClass fromLivingBean(LivingBean livingBean, title){
     if (livingBean == null) return null;
     LiveClass liveClass = LiveClass();
     liveClass.showImage = livingBean.listImage;
@@ -27,10 +28,11 @@ class LiveClass {
     liveClass.originalPrice = livingBean.originalPrice;
     liveClass.standardPrice = livingBean.standardPrice;
     liveClass.detailUrl = livingBean.detailUrl;
+    liveClass.title = title;
     return liveClass;
   }
 
-  static LiveClass fromLiveListApi(dynamic map){
+  static LiveClass fromLiveListApi(dynamic map, title){
     if (map == null) return null;
     LiveClass liveClass = LiveClass();
     liveClass.showImage = map['listImage'];
@@ -47,6 +49,7 @@ class LiveClass {
     liveClass.originalPrice = map['originalPrice'];
     liveClass.standardPrice = map['standardPrice'];
     liveClass.detailUrl = map['detailUrl'];
+    liveClass.title = title;
     return liveClass;
   }
 

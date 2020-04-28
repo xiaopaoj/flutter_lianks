@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/model/user_info.dart';
-import 'package:flutterapp/views/first_page/live/live_pack_page.dart';
+
+import 'live/live_pack_page.dart';
 
 DefaultTabController _tabController;
 

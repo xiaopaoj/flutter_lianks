@@ -1,7 +1,7 @@
 
 class Api {
 
-  static const String BASE_URL = "http://lianksapp-test.yplus.cn";
+  static const String BASE_URL = "http://10.11.5.93:9611";
 
   static const String LIVE_TOP = BASE_URL + "/api/live/top";
 
