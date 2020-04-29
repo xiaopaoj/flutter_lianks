@@ -7,4 +7,6 @@ class Api {
 
   static const String LIVE_LIST = BASE_URL + "/api/live/list";
 
+  static const String PRODUCT_TAGS = BASE_URL + "/api/product/tags";
+
 }

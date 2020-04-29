@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterapp/model/user_info.dart';
-import 'package:flutterapp/views/main_page.dart';
+import 'package:flutterapp/views/live/live_main_page.dart';
+import 'package:flutterapp/views/product/product_main_page.dart';
 
 class AppHomePage extends StatefulWidget {
 
@@ -25,22 +26,22 @@ class _AppHomePage extends State<AppHomePage>
     {
       'text': '直播',
       'color': Colors.white,
-      'icon': "icon_zhibo@3x.png"
+      'icon': "icon_zhibo@3x.png",
     },
     {
       'text': '课程',
       'color': Colors.black,
-      'icon': "icon_kecheng@3x.png"
+      'icon': "icon_kecheng@3x.png",
     },
     {
       'text': '导师',
       'color': Colors.red,
-      'icon': "icon_daoshi@3x.png"
+      'icon': "icon_daoshi@3x.png",
     },
     {
       'text': '我的',
       'color': Colors.yellow,
-      'icon': "icon_wode@3x.png"
+      'icon': "icon_wode@3x.png",
     },
   ];
 
@@ -58,7 +59,7 @@ class _AppHomePage extends State<AppHomePage>
           icon: myIcon(18.0, "assets/images/icon/default/" + r['icon'],),
           activeIcon: myIcon(22.0, "assets/images/icon/click/" + r['icon'],)
       ));
-      _list.add(new MainPage(null));
+      _list.add(new Container());
     });
   }
 
@@ -83,6 +84,21 @@ class _AppHomePage extends State<AppHomePage>
 
   void _itemTapped(int index) {
     setState(() {
+
+      switch(index){
+        case 0 :
+          if(_list[index] is Container){
+            _list[index] = new LiveMainPage(null);
+          }
+          break;
+        case 1 :
+          if(_list[index] is Container){
+            _list[index] = new ProductMainPage(null);
+          }
+          break;
+        default :
+          _list[index] = new Container();
+      }
       _currentIndex = index;
     });
   }

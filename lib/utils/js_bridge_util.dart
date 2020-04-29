@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutterapp/views/web/share_page.dart';
 
-import '../views/web/Js_bridge.dart';
+import 'Js_bridge.dart';
 import 'toast_utils.dart';
 
 class JsBridgeUtil {

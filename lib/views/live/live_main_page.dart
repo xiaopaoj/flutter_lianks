@@ -2,23 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/model/user_info.dart';
 
-import 'live/live_pack_page.dart';
+import 'live_pack_page.dart';
 
 DefaultTabController _tabController;
 
-class MainPage extends StatefulWidget {
+class LiveMainPage extends StatefulWidget {
   final UserInfo userInfo;
 
-  MainPage(this.userInfo);
+  LiveMainPage(this.userInfo);
 
   @override
-  State<MainPage> createState() => _MainPage(this.userInfo);
+  State<LiveMainPage> createState() => _LiveMainPage(this.userInfo);
 }
 
-class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin {
+class _LiveMainPage extends State<LiveMainPage> with SingleTickerProviderStateMixin {
   UserInfo userInfo;
 
-  _MainPage(this.userInfo);
+  _LiveMainPage(this.userInfo);
 
   List<Tab> _list = [];
 

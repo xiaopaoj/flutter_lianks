@@ -33,6 +33,7 @@ class NetUtils {
     } else {
       response = await dio.get(url);
     }
+    print("NetUtils==============>${response.data}");
     return response.data;
   }
 
