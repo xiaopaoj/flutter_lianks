@@ -9,6 +9,13 @@ import 'package:flutterapp/views/live/live_class_page.dart';
 import 'package:flutterapp/views/live/live_top_page.dart';
 
 class LivePackPage extends StatefulWidget {
+
+  final int liveType;
+
+  final int isPast;
+
+  const LivePackPage({Key key, this.liveType, this.isPast}) : super(key: key);
+
   @override
   State<LivePackPage> createState() => new _LivePackPage();
 }
@@ -25,7 +32,7 @@ class _LivePackPage extends State<LivePackPage> {
 
   int _pageNum = 1;
 
-  int _pageSize = 3;
+  int _pageSize = 5;
 
   List<dynamic> _list = [];
 
@@ -34,8 +41,7 @@ class _LivePackPage extends State<LivePackPage> {
     super.initState();
 
     _scrollController.addListener(() {
-      print(_scrollController.position.pixels.toString() + "   " + _scrollController.position.maxScrollExtent.toString());
-      if (_scrollController.position.pixels >
+      if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent) {
         if(null == _page ||
             _page.pages > _pageNum) {
@@ -57,7 +63,8 @@ class _LivePackPage extends State<LivePackPage> {
   }
 
   void _getList() async {
-    DataUtils.getLiveList(_pageNum, _pageSize, 0, 0).then((r) {
+    DataUtils.getLiveList(_pageNum, _pageSize, widget.liveType,
+        widget.isPast).then((r) {
       setState(() {
         _page = r;
         _list.addAll(_page.dataList);
@@ -93,7 +100,8 @@ class _LivePackPage extends State<LivePackPage> {
             null != _living ? new Container(
               height: 90,
               margin: EdgeInsets.only(top: 4),
-              child: new LivingClassPage(LiveClass.fromLivingBean(_living, "直播课详情")),
+              child: new LivingClassPage(LiveClass.fromLivingBean(_living, "直播课详情")
+              ),
             ) : new Container(),
           ),
 
@@ -106,7 +114,9 @@ class _LivePackPage extends State<LivePackPage> {
                   width: 90,
                   height: 25,
                   margin: EdgeInsets.only(top: 16, bottom: 13, left: 12),
-                  child: new Text("系列课列表",
+                  child: new Text(
+                    widget.liveType == 0 ? "系列课列表"
+                        : widget.isPast == 1 ? "回放列表" : "课程列表",
                     style: new TextStyle(
                       fontSize: 18,
                       color: Color.fromRGBO(0, 0, 0, 1),
@@ -122,7 +132,7 @@ class _LivePackPage extends State<LivePackPage> {
             delegate: new SliverChildBuilderDelegate(
                   (context, index) {
                 return new LivingClassPage(
-                    LiveClass.fromLiveListApi(_list[index], "系列课详情"));
+                    LiveClass.fromLiveListApi(_list[index], widget.liveType == 0 ? "系列课详情" : "直播课详情"));
               },
               childCount: _list.length,
             ),

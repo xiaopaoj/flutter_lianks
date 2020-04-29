@@ -18,7 +18,7 @@ class JsBridgeUtil {
       int actionType = jsBridge.data['actionType'];
       if(actionType == 1) {
         List content = jsBridge.data['content'];
-        if(content[1] == null) {
+        if(content[1] == null || content[1] == "") {
           return;
         }
         // 唤起分享窗口

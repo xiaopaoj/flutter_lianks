@@ -25,23 +25,9 @@ class _MainPage extends State<MainPage> with SingleTickerProviderStateMixin {
   TabController tabController;
 
   List<Widget> mTabView = [
-    new LivePackPage(),
-    Container(
-      child: Center(
-        child: Text(
-          '2',
-          style: TextStyle(fontSize: 50),
-        ),
-      ),
-    ),
-    Container(
-      child: Center(
-        child: Text(
-          '3',
-          style: TextStyle(fontSize: 50),
-        ),
-      ),
-    )
+    new LivePackPage(liveType: 0),
+    new LivePackPage(liveType: 1),
+    new LivePackPage(liveType: 1, isPast: 1,),
   ]; //使用widget的形式
 
 
