@@ -1,10 +1,11 @@
 
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/utils/data_utils.dart';
+import 'package:flutterapp/utils/toast_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../utils/js_bridge_util.dart';
 
 class WebDetailPage extends StatefulWidget {
 
@@ -22,15 +23,28 @@ class _WebDetailPage extends State<WebDetailPage> {
 
   WebViewController _controller;
 
+
+
   @override
   void initState() {
     super.initState();
 
   }
 
+  wxShareSession(){
+    print("123123123123123123123123123123123123123123123");
+    ToastUtils.showMessage("点击了按钮");
+  }
+
   @override
   Widget build(BuildContext context) {
 
+    JavascriptChannel _jsBridge(BuildContext context) => JavascriptChannel(
+        name: 'WebViewJavascriptBridge', // 与h5 端的一致 不然收不到消息
+        onMessageReceived: (JavascriptMessage msg) async{
+          String jsonStr = msg.message;
+          JsBridgeUtil.executeMethod(context, JsBridgeUtil.parseJson(jsonStr));
+    });
 
     return Scaffold(
       appBar: new AppBar(
@@ -58,7 +72,7 @@ class _WebDetailPage extends State<WebDetailPage> {
       ),
       body: new WebView(
         initialUrl: widget.url,
-        userAgent: "Android",
+        userAgent: "flutter",
         debuggingEnabled: true,
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
@@ -69,15 +83,13 @@ class _WebDetailPage extends State<WebDetailPage> {
           _controller.evaluateJavascript("document.cookie = 'appName=lianks'");
         },
         javascriptChannels: <JavascriptChannel>[
-          JavascriptChannel(
-            name: "WebViewJavascriptBridge",
-            onMessageReceived: (JavascriptMessage message) {
-              print('WebViewJavascriptBridge参数： ${message.message}');
-            },
-          ),
+          _jsBridge(context) // 与h5 通信
         ].toSet(),
       ),
     );
   }
+
+
+
 
 }

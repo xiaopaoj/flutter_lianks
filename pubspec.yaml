@@ -31,6 +31,8 @@ dependencies:
   dio: ^2.0.15
   path_provider: ^1.1.0
   webview_flutter: ^0.3.21
+  fluttertoast: ^4.0.0
+  fluwx: ^2.0.8+3
 
 dev_dependencies:
   flutter_test:

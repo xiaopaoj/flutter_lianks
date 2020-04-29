@@ -7,6 +7,7 @@ import 'package:flutterapp/application.dart';
 import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/views/home.dart';
 import 'package:flutterapp/widget/loading_widget.dart';
+import 'package:fluwx/fluwx.dart';
 
 
 
@@ -34,9 +35,26 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    print("initState");
 
     super.initState();
+    _initFluwx();
+
+
+    weChatResponseEventHandler.listen((res) {
+      if (res is WeChatPaymentResponse) {
+
+
+      }
+    });
+  }
+
+  void _initFluwx() async {
+    await registerWxApi(
+      appId: "wxef1bca1fa60dd05c",
+      doOnAndroid: true,
+      doOnIOS: true);
+    var result = await isWeChatInstalled;
+    print("is installed $result");
   }
   
   bool _isReloading = false;
