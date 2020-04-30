@@ -3,6 +3,7 @@ import 'package:flutterapp/api.dart';
 import 'package:flutterapp/model/dict.dart';
 import 'package:flutterapp/model/live_top.dart';
 import 'package:flutterapp/model/page.dart';
+import 'package:flutterapp/model/product.dart';
 import 'package:flutterapp/utils/net_utils.dart';
 
 class DataUtils {
@@ -42,6 +43,37 @@ class DataUtils {
       return data.map((r){
         return Dict.fromMap(r);
       }).toList();
+    } catch (err) {
+      return response['message'];
+    }
+  }
+
+  static Future<List<Product>> getProductRecommendList(int courseType) async {
+    var response = await NetUtils.get(Api.PRODUCT_RECOMMEND_LIST, {
+      "courseType" : courseType
+    });
+    try {
+      List data = response['data'];
+      return data.map((r){
+        return Product.fromMap(r);
+      }).toList();
+    } catch (err) {
+      return response['message'];
+    }
+  }
+
+  static Future<Page> getProductList(int pageNum, int pageSize, int teacherId,
+      int productType, int courseType) async {
+    var response = await NetUtils.get(Api.PRODUCT_LIST, {
+      "pageNum" : pageNum,
+      "pageSize" : pageSize,
+      "teacherId" : teacherId,
+      "productType" : productType,
+      "courseType" : courseType,
+    });
+    try {
+      Page page = Page.fromMap(response['data']);
+      return page;
     } catch (err) {
       return response['message'];
     }

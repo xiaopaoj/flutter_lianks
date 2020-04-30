@@ -1,49 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-
-import 'live_class_page.dart';
-
-class LiveTopPage extends StatefulWidget {
-  @override
-  State<LiveTopPage> createState() => _LiveTopPage();
-}
-
-class _LiveTopPage extends State<LiveTopPage> {
-  @override
-  Widget build(BuildContext context) {
-    return new ListView(
-      children: <Widget>[
-        new Container(
-          child: new Container(
-            child: new Swiper(
-              itemWidth: MediaQuery.of(context).size.width,
-              itemHeight: 212,
-              itemCount: 3,
-              itemBuilder: (BuildContext context, int index) {
-                return new Image.network(
-                  "https://lianks-picture-uat.oss-cn-beijing.aliyuncs.com/lianks-images/20200420/de2c7d11-0898-4e88-bd2c-28b25524e862.png",
-                  fit: BoxFit.fill,
-                );
-              },
-              pagination: new SwiperPagination(),
-              control: new SwiperControl(),
-            ),
-            height: 212,
-          ),
-        ),
-        new Container(
-          height: 24,
-          margin: EdgeInsets.only(top: 4),
-          child: new LivingLabel(),
-        ),
-        new Container(
-            child: new LivingClassPage(null))
-      ],
-    );
-  }
-}
-
 
 class LivingLabel extends StatelessWidget {
 

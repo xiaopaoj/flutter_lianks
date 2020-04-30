@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/model/user_info.dart';
 
-import 'live_pack_page.dart';
+import 'live_list_page.dart';
 
 DefaultTabController _tabController;
 
@@ -25,9 +25,9 @@ class _LiveMainPage extends State<LiveMainPage> with SingleTickerProviderStateMi
   TabController tabController;
 
   List<Widget> mTabView = [
-    new LivePackPage(liveType: 0),
-    new LivePackPage(liveType: 1),
-    new LivePackPage(liveType: 1, isPast: 1,),
+    new LiveListPage(liveType: 0),
+    new LiveListPage(liveType: 1),
+    new LiveListPage(liveType: 1, isPast: 1,),
   ]; //使用widget的形式
 
 

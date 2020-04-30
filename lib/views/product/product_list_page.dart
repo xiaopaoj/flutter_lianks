@@ -1,32 +1,28 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutterapp/model/live_class.dart';
-import 'package:flutterapp/model/live_top.dart';
 import 'package:flutterapp/model/page.dart';
+import 'package:flutterapp/model/product.dart';
 import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/live/live_class_page.dart';
-import 'package:flutterapp/views/live/live_top_page.dart';
+import 'package:flutterapp/views/product/product_class_page.dart';
 
-class LivePackPage extends StatefulWidget {
+class ProductListPage extends StatefulWidget {
 
-  final int liveType;
+  final int courseType;
 
-  final int isPast;
-
-  const LivePackPage({Key key, this.liveType, this.isPast}) : super(key: key);
+  ProductListPage(this.courseType);
 
   @override
-  State<LivePackPage> createState() => new _LivePackPage();
+  State<ProductListPage> createState() => new _ProductListPage();
 }
 
-class _LivePackPage extends State<LivePackPage> {
+class _ProductListPage extends State<ProductListPage> {
+
 
   ScrollController _scrollController = new ScrollController();
 
-  List<BannerListBean> _bannerList;
-
-  LivingBean _living;
+  List<Product> _recommendList = [];
 
   Page _page;
 
@@ -39,24 +35,12 @@ class _LivePackPage extends State<LivePackPage> {
   @override
   void initState() {
     super.initState();
-
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels >=
-          _scrollController.position.maxScrollExtent) {
-        if(null == _page ||
-            _page.pages > _pageNum) {
-            _pageNum = _pageNum + 1;
-          _getList();
-
-        }
+    DataUtils.getProductRecommendList(widget.courseType).then((r) {
+      if(mounted) {
+        setState(() {
+          _recommendList.addAll(r);
+        });
       }
-    });
-
-    DataUtils.getLiveTop().then((r) {
-      setState(() {
-        _bannerList = r.bannerList;
-        _living = r.living;
-      });
     });
 
     _getList();
@@ -65,19 +49,20 @@ class _LivePackPage extends State<LivePackPage> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _list = [];
     super.dispose();
   }
 
   void _getList() async {
-    DataUtils.getLiveList(_pageNum, _pageSize, widget.liveType,
-        widget.isPast).then((r) {
-      setState(() {
-        _page = r;
-        _list.addAll(_page.dataList);
-      });
+    DataUtils.getProductList(_pageNum, _pageSize, null, null, widget.courseType).then((r) {
+      if(mounted) {
+        setState(() {
+          _page = r;
+          _list.addAll(_page.dataList);
+        });
+      }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -95,37 +80,17 @@ class _LivePackPage extends State<LivePackPage> {
 
           new SliverToBoxAdapter(
             child:
-            null != _living ? new Container(
-              height: 24,
-              margin: EdgeInsets.only(top: 4),
-              child: new LivingLabel(),
-            ) : new Container(),
-          ),
-
-          new SliverToBoxAdapter(
-            child:
-            null != _living ? new Container(
-              height: 90,
-              margin: EdgeInsets.only(top: 4),
-              child: new LivingClassPage(LiveClass.fromLivingBean(_living, "直播课详情")
-              ),
-            ) : new Container(),
-          ),
-
-          new SliverToBoxAdapter(
-            child:
             new Container(
                 margin: EdgeInsets.only(top: 12),
                 color: Color.fromRGBO(255, 255, 255, 1),
                 child: new Container(
                   width: 90,
                   height: 25,
-                  margin: EdgeInsets.only(top: 16, bottom: 13, left: 12),
+                  margin: EdgeInsets.only(top: 16, bottom: 16, left: 12),
                   child: new Text(
-                    widget.liveType == 0 ? "系列课列表"
-                        : widget.isPast == 1 ? "回放列表" : "课程列表",
+                    "所有教师培训",
                     style: new TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Color.fromRGBO(0, 0, 0, 1),
                       //字体粗细  粗体和正常
                       fontWeight: FontWeight.w400,
@@ -138,8 +103,8 @@ class _LivePackPage extends State<LivePackPage> {
           new SliverList(
             delegate: new SliverChildBuilderDelegate(
                   (context, index) {
-                return new LivingClassPage(
-                    LiveClass.fromLiveListApi(_list[index], widget.liveType == 0 ? "系列课详情" : "直播课详情"));
+                return new ProductClassPage(
+                    Product.fromMap(_list[index]));
               },
               childCount: _list.length,
             ),
@@ -151,24 +116,27 @@ class _LivePackPage extends State<LivePackPage> {
     );
   }
 
+
   Widget _bannerView() {
-    if(_bannerList != null) {
+    if(_recommendList.length > 0) {
       return new Container(
         child: new Container(
           child: new Swiper(
-            itemWidth: MediaQuery.of(context).size.width,
-            itemHeight: 212,
-            itemCount: _bannerList.length,
+            itemWidth: 315,
+            itemHeight: 394,
+            itemCount: _recommendList.length,
             itemBuilder: (BuildContext context, int index) {
               return new Image.network(
-                _bannerList[index].imgUrl,
+                _recommendList[index].listImage,
                 fit: BoxFit.fill,
               );
             },
             pagination: new SwiperPagination(),
             control: new SwiperControl(),
+            viewportFraction: 0.8, // 当前视窗展示比例 小于1可见上一个和下一个视窗
+            scale: 0.9, // 两张图片之间的间隔
           ),
-          height: 212,
+          height: 394,
         ),
       );
     }

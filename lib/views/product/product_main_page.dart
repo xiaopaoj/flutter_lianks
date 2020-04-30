@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/live/live_pack_page.dart';
+import 'package:flutterapp/views/live/live_list_page.dart';
+import 'package:flutterapp/views/product/product_list_page.dart';
 
 class ProductMainPage extends StatefulWidget {
   final UserInfo userInfo;
@@ -26,12 +27,7 @@ class _ProductMainPage extends State<ProductMainPage>
   TabController _tabController;
 
 
-  List<Widget> mTabView = [
-    new LivePackPage(liveType: 0),
-    new LivePackPage(liveType: 0),
-    new LivePackPage(liveType: 0),
-    new LivePackPage(liveType: 0),
-  ]; //使用widget的形式
+  List<Widget> mTabView = []; //使用widget的形式
 
   @override
   void initState() {
@@ -46,6 +42,11 @@ class _ProductMainPage extends State<ProductMainPage>
             textAlign: TextAlign.left,
           ));
         }).toList());
+
+        mTabView.addAll(tags.map((tag) {
+          return new ProductListPage(int.parse(tag.dictValue));
+        }).toList());
+
         _scrollViewController = ScrollController();
         _tabController = TabController(vsync: this, length: _list.length); // 和下面的 TabBar.tabs 数量对应
       });
