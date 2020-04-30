@@ -62,6 +62,13 @@ class _LivePackPage extends State<LivePackPage> {
     _getList();
   }
 
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _list = [];
+    super.dispose();
+  }
+
   void _getList() async {
     DataUtils.getLiveList(_pageNum, _pageSize, widget.liveType,
         widget.isPast).then((r) {

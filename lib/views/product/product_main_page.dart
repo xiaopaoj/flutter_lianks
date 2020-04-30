@@ -21,7 +21,10 @@ class _ProductMainPage extends State<ProductMainPage>
 
   List<Tab> _list = [];
 
-  TabController tabController;
+  ScrollController _scrollViewController;
+
+  TabController _tabController;
+
 
   List<Widget> mTabView = [
     new LivePackPage(liveType: 0),
@@ -43,17 +46,24 @@ class _ProductMainPage extends State<ProductMainPage>
             textAlign: TextAlign.left,
           ));
         }).toList());
-        tabController = new TabController(length: _list.length, vsync: this);
+        _scrollViewController = ScrollController();
+        _tabController = TabController(vsync: this, length: _list.length); // 和下面的 TabBar.tabs 数量对应
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollViewController.dispose();
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return _list.length <= 0
         ? new Container()
-        : new DefaultTabController(
-            length: _list.length,
+        : new SizedBox(
             child: new Scaffold(
               backgroundColor: Theme.of(context).backgroundColor,
               appBar: new PreferredSize(
@@ -102,8 +112,9 @@ class _ProductMainPage extends State<ProductMainPage>
                     preferredSize: Size.fromHeight(108),
                     child: new Container(
                       child: new TabBar(
+                        isScrollable: true,
                         tabs: _list,
-                        controller: tabController,
+                        controller: _tabController,
                         indicator: new UnderlineTabIndicator(
                             borderSide: BorderSide(
                                 width: 1.0, color: Color.fromRGBO(6, 6, 6, 1)),
@@ -122,7 +133,7 @@ class _ProductMainPage extends State<ProductMainPage>
                 ),
               ),
               body: new TabBarView(
-                controller: tabController,
+                controller: _tabController,
                 children: mTabView,
               ),
             ),
