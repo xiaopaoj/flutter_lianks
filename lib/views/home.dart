@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/views/live/live_main_page.dart';
 import 'package:flutterapp/views/product/product_main_page.dart';
+import 'package:flutterapp/views/teacher/teacher_main_page.dart';
 
 class AppHomePage extends StatefulWidget {
 
@@ -66,6 +67,7 @@ class _AppHomePage extends State<AppHomePage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: new IndexedStack(
         index: _currentIndex,
         children: _list,
@@ -94,6 +96,11 @@ class _AppHomePage extends State<AppHomePage>
         case 1 :
           if(_list[index] is Container){
             _list[index] = new ProductMainPage(null);
+          }
+          break;
+        case 2 :
+          if(_list[index] is Container){
+            _list[index] = new TeacherMainPage(null);
           }
           break;
         default :

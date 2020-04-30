@@ -13,4 +13,8 @@ class Api {
 
   static const String PRODUCT_LIST = BASE_URL + "/api/product/list";
 
+  static const String TEACHER_TAGS = BASE_URL + "/api/teacher/tags";
+
+  static const String TEACHER_LIST = BASE_URL + "/api/teacher/list";
+
 }

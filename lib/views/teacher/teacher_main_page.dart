@@ -4,21 +4,22 @@ import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/utils/data_utils.dart';
 import 'package:flutterapp/views/live/live_list_page.dart';
 import 'package:flutterapp/views/product/product_list_page.dart';
+import 'package:flutterapp/views/teacher/teacher_list_page.dart';
 
-class ProductMainPage extends StatefulWidget {
+class TeacherMainPage extends StatefulWidget {
   final UserInfo userInfo;
 
-  ProductMainPage(this.userInfo);
+  TeacherMainPage(this.userInfo);
 
   @override
-  State<ProductMainPage> createState() => _ProductMainPage(this.userInfo);
+  State<TeacherMainPage> createState() => _TeacherMainPage(this.userInfo);
 }
 
-class _ProductMainPage extends State<ProductMainPage>
+class _TeacherMainPage extends State<TeacherMainPage>
     with SingleTickerProviderStateMixin {
   UserInfo userInfo;
 
-  _ProductMainPage(this.userInfo);
+  _TeacherMainPage(this.userInfo);
 
   List<Tab> _list = [];
 
@@ -32,7 +33,7 @@ class _ProductMainPage extends State<ProductMainPage>
   @override
   void initState() {
     super.initState();
-    DataUtils.getProductTags().then((tags) {
+    DataUtils.getTeacherTags().then((tags) {
       setState(() {
         _list.addAll(tags.map((tag) {
           return new Tab(
@@ -43,7 +44,7 @@ class _ProductMainPage extends State<ProductMainPage>
         }).toList());
 
         mTabView.addAll(tags.map((tag) {
-          return new ProductListPage(int.parse(tag.dictValue));
+          return new TeacherListPage(int.parse(tag.dictValue));
         }).toList());
 
         _scrollViewController = ScrollController();
@@ -76,7 +77,7 @@ class _ProductMainPage extends State<ProductMainPage>
                     margin: EdgeInsets.only(
                         left: 12, top: 12, right: 0, bottom: 12),
                     child: new Text(
-                      "培训",
+                      "导师",
                       textAlign: TextAlign.center,
                       softWrap: false,
                       maxLines: 1,

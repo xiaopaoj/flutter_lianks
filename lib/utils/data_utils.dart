@@ -78,4 +78,33 @@ class DataUtils {
       return response['message'];
     }
   }
+
+
+  static Future<List<Dict>> getTeacherTags() async {
+    var response = await NetUtils.get(Api.TEACHER_TAGS);
+    try {
+      List data = response['data'];
+      return data.map((r){
+        return Dict.fromMap(r);
+      }).toList();
+    } catch (err) {
+      return response['message'];
+    }
+  }
+
+  static Future<Page> getTeacherList(int pageNum, int pageSize, int teacherType,
+      String keyword) async {
+    var response = await NetUtils.get(Api.TEACHER_LIST, {
+      "pageNum" : pageNum,
+      "pageSize" : pageSize,
+      "teacherType" : teacherType,
+      "keyword" : keyword,
+    });
+    try {
+      Page page = Page.fromMap(response['data']);
+      return page;
+    } catch (err) {
+      return response['message'];
+    }
+  }
 }

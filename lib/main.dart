@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: Color(0xFFEFEFEF),
         backgroundColor: Color(0xFFEFEFEF),
         primaryColorDark: Color(0xFFEFEFEF),
-        accentColor: Color(0xFF888888),
+        accentColor: Color(0xFFEFEFEF),
         textTheme: TextTheme(
           //设置Material的默认字体样式
           body1: TextStyle(color: Color(0xFF888888), fontSize: 16.0),
@@ -93,7 +93,7 @@ class _MyAppState extends State<MyApp> {
       ),
 
       home: new Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).backgroundColor,
         body: showWelcomeWidget(),),
 //      onGenerateRoute: Application.router.generator,
     );
