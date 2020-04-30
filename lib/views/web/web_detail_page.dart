@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/utils/data_utils.dart';
+import 'package:flutterapp/utils/local_storage_utils.dart';
 import 'package:flutterapp/utils/toast_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -79,7 +80,7 @@ class _WebDetailPage extends State<WebDetailPage> {
           _controller = controller;
         },
         onPageFinished: (String value) {
-          _controller.evaluateJavascript("document.cookie = 'Token=${DataUtils.token}'");
+          _controller.evaluateJavascript("document.cookie = 'Token=${LocalStorageUtils.getToken()}'");
           _controller.evaluateJavascript("document.cookie = 'appName=lianks'");
         },
         javascriptChannels: <JavascriptChannel>[

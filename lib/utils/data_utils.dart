@@ -4,11 +4,10 @@ import 'package:flutterapp/model/dict.dart';
 import 'package:flutterapp/model/live_top.dart';
 import 'package:flutterapp/model/page.dart';
 import 'package:flutterapp/model/product.dart';
+import 'package:flutterapp/model/user_page_data.dart';
 import 'package:flutterapp/utils/net_utils.dart';
 
 class DataUtils {
-
-  static String token = "eyJhbGciOiJIUzI1NiJ9.eyJyZWFsTmFtZSI6IiIsIm5pY2tOYW1lIjoi5aSp5aSW6aOe5LuZIiwiZ2VuZXJhdGVUaW1lIjoxNTg3OTgwNTEwMjQ0LCJ0b2tlblR5cGUiOiJjdXN0b21lciIsImV4cCI6MTYwMzUzMjUxMCwidXNlcklkIjo1ODAyNjkyNDc5MTQwNTA3OTYsInBsYXRmb3JtIjoxfQ.pSVwiWvzyepIUucHs-t3ip-dXMALRs8Q1YwjwYS-HuI";
 
   static Future<LiveTopModel> getLiveTop() async {
     var response = await NetUtils.get(Api.LIVE_TOP);
@@ -103,6 +102,15 @@ class DataUtils {
     try {
       Page page = Page.fromMap(response['data']);
       return page;
+    } catch (err) {
+      return response['message'];
+    }
+  }
+
+  static Future<UserPageData> getMyIndexInfo() async {
+    var response = await NetUtils.get(Api.MY_INDEX_INFO);
+    try {
+      return UserPageData.fromMap(response['data']);
     } catch (err) {
       return response['message'];
     }

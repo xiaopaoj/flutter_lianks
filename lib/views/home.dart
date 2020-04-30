@@ -1,9 +1,15 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutterapp/event/event_model.dart';
 import 'package:flutterapp/model/user_info.dart';
+import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/views/live/live_main_page.dart';
 import 'package:flutterapp/views/product/product_main_page.dart';
 import 'package:flutterapp/views/teacher/teacher_main_page.dart';
+import 'package:flutterapp/views/user/user_main_page.dart';
+
+import '../application.dart';
 
 class AppHomePage extends StatefulWidget {
 
@@ -62,6 +68,16 @@ class _AppHomePage extends State<AppHomePage>
       ));
       _list.add(new Container());
     });
+
+
+    Application.eventBus.on<NoLoginEvent>().listen((event) {
+      print('接收到的 event 没有登录');
+      Application.router.navigateTo(context,
+        '${Routes.webDetail}?url=${Uri.encodeComponent(
+            "http://baidu.com")}&title=${Uri.encodeComponent("百度")}',
+        transition: TransitionType.nativeModal,
+      );
+    });
   }
 
   @override
@@ -101,6 +117,11 @@ class _AppHomePage extends State<AppHomePage>
         case 2 :
           if(_list[index] is Container){
             _list[index] = new TeacherMainPage(null);
+          }
+          break;
+        case 3 :
+          if(_list[index] is Container){
+            _list[index] = new UserMainPage(null);
           }
           break;
         default :

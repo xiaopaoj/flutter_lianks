@@ -28,11 +28,12 @@ dependencies:
   fluro: ^1.3.4
   flutter_swiper : 1.1.6
   cookie_jar: ^1.0.0
-  dio: ^2.0.15
+  dio: ^3.0.9
   path_provider: ^1.1.0
   webview_flutter: ^0.3.21
   fluttertoast: ^4.0.0
   fluwx: ^2.0.8+3
+  shared_preferences: ^0.5.7
 
 dev_dependencies:
   flutter_test:

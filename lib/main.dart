@@ -1,13 +1,14 @@
+import 'package:event_bus/event_bus.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:event_bus/event_bus.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterapp/application.dart';
 import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/views/home.dart';
-import 'package:flutterapp/widget/loading_widget.dart';
 import 'package:fluwx/fluwx.dart';
+
+import 'event/event_model.dart';
 
 
 
@@ -35,7 +36,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-
     super.initState();
     _initFluwx();
 
@@ -46,6 +46,11 @@ class _MyAppState extends State<MyApp> {
 
       }
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void _initFluwx() async {
