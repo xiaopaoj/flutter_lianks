@@ -17,42 +17,46 @@ Map<String, dynamic> optHeader = {
   'content-type': 'application/json'
 };
 
-Dio dio = new Dio(BaseOptions(connectTimeout: 30000, headers: optHeader));
+Dio dio;
 
 
 class NetUtils {
 
-
-  static Future get(String url, [Map<String, dynamic> params]) async {
-
-    dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (RequestOptions options) async {
-        String token = "abd"; //LocalStorageUtils.getToken();
-        if(null != token && "" != token) {
-          optHeader.addAll({
-            "Authorization-token" : token
-          });
-          options.headers = optHeader;
-        }
-        return options;
-      },
-      onResponse:(Response response) async {
-        print("interceptors==============>${response.data}");
-        int code = response.data['code'];
-        if(code == 401) {
-          // 未登录，跳转登录页面
-          ToastUtils.showMessage("未登录或登录失效，请重新登录");
+  static Dio getDio(){
+    if(dio == null) {
+      dio = new Dio(BaseOptions(connectTimeout: 30000, headers: optHeader));
+      dio.interceptors.add(InterceptorsWrapper(
+        onRequest: (RequestOptions options) async {
+          String token = "abd"; //LocalStorageUtils.getToken();
+          if(null != token && "" != token) {
+            optHeader.addAll({
+              "Authorization-token" : token
+            });
+            options.headers = optHeader;
+          }
+          return options;
+        },
+        onResponse:(Response response) async {
+          print("interceptors==============>${response.data}");
+          int code = response.data['code'];
+          if(code == 401) {
+            // 未登录，跳转登录页面
+            ToastUtils.showMessage("未登录或登录失效，请重新登录");
 //          Application.router.navigateTo(Application.context,
 //            '${Routes.webDetail}',
 //            transition: TransitionType.nativeModal,
 //          );
-          Application.eventBus.fire(NoLoginEvent());
-        }
-        return response; // continue
-      },
-    ));
+            Application.eventBus.fire(NoLoginEvent());
+          }
+          return response; // continue
+        },
+      ));
+    }
+    return dio;
+  }
 
 
+  static Future get(String url, [Map<String, dynamic> params]) async {
     var response;
 
     // 设置代理 便于本地 charles 抓包
@@ -69,9 +73,9 @@ class NetUtils {
 //    await dir.create();
 //    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
     if (params != null) {
-      response = await dio.get(url, queryParameters: params);
+      response = await getDio().get(url, queryParameters: params);
     } else {
-      response = await dio.get(url);
+      response = await getDio().get(url);
     }
     return response.data;
   }
@@ -89,7 +93,7 @@ class NetUtils {
 //    var dir = new Directory("$documentsPath/cookies");
 //    await dir.create();
 //    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
-    var response = await dio.post(url, data: params);
+    var response = await getDio().post(url, data: params);
     return response.data;
   }
 }

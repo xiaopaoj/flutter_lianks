@@ -83,10 +83,10 @@ class _MyAppState extends State<MyApp> {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-        primaryColor: Color(0xFFEFEFEF),
-        backgroundColor: Color(0xFFEFEFEF),
-        primaryColorDark: Color(0xFFEFEFEF),
-        accentColor: Color(0xFFEFEFEF),
+        primaryColor: Color.fromRGBO(255, 255, 255, 1),
+        backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+        primaryColorDark: Color.fromRGBO(255, 255, 255, 1),
+        accentColor: Color.fromRGBO(255, 255, 255, 1),
         textTheme: TextTheme(
           //设置Material的默认字体样式
           body1: TextStyle(color: Color(0xFF888888), fontSize: 16.0),

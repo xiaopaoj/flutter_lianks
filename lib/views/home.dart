@@ -72,9 +72,7 @@ class _AppHomePage extends State<AppHomePage>
 
     Application.eventBus.on<NoLoginEvent>().listen((event) {
       print('接收到的 event 没有登录');
-      Application.router.navigateTo(context,
-        '${Routes.webDetail}?url=${Uri.encodeComponent(
-            "http://baidu.com")}&title=${Uri.encodeComponent("百度")}',
+      Application.router.navigateTo(context, '${Routes.login}',
         transition: TransitionType.nativeModal,
       );
     });
@@ -121,7 +119,11 @@ class _AppHomePage extends State<AppHomePage>
           break;
         case 3 :
           if(_list[index] is Container){
-            _list[index] = new UserMainPage(null);
+            UserMainPage u = new UserMainPage(null);
+            _list[index] = u;
+          } else {
+            UserMainPage u = _list[index];
+            u.createState().initState();
           }
           break;
         default :
