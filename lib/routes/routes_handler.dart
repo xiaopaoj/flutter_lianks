@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutterapp/views/my/product/my_product_main_page.dart';
 import 'package:flutterapp/views/user/login_page.dart';
 import 'package:flutterapp/views/web/web_detail_page.dart';
 
@@ -12,5 +13,11 @@ var webDetailHandler = new Handler(
 var loginHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     return new LoginPage();
+  },
+);
+
+var myProductHandler = new Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    return new MyProductMainPage(params['title'].first, int.parse(params['type'].first));
   },
 );

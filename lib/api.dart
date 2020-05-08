@@ -23,4 +23,6 @@ class Api {
   static const String VALID_CODE = BASE_URL + "/oauth/validCode";
 
   static const String LOGIN_V2 = BASE_URL + "/oauth/loginV2";
+
+  static const String MY_PRODUCT_LIST = BASE_URL + "/api/user/my/productList";
 }

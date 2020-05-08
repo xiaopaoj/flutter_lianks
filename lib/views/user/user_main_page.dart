@@ -435,8 +435,47 @@ class _UserMainPage extends State<UserMainPage>
         transition: TransitionType.nativeModal,
       );
     } else if(url.contains("LIANKS_NH://")) {
+      url = url.replaceAll("LIANKS_NH://", "");
       // 跳转原生
-      ToastUtils.showMessage("跳转${url.replaceAll("LIANKS_NH://", "")}");
+      ToastUtils.showMessage("跳转$url");
+
+      switch (url) {
+        case "OpenMyTeacherClass":
+        //教师培训
+          Application.router.navigateTo(context,
+            '${Routes.myProduct}?title=${Uri.encodeComponent(
+                bean.title)}&type=2',
+            transition: TransitionType.nativeModal,
+          );
+          break;
+        case "OpenMyWorkShopClass":
+        //工作坊
+          Application.router.navigateTo(context,
+            '${Routes.myProduct}?title=${Uri.encodeComponent(
+                bean.title)}&type=1',
+            transition: TransitionType.nativeModal,
+          );
+          break;
+        case "OpenMyMiniClass":
+        //小班课
+          Application.router.navigateTo(context,
+            '${Routes.myProduct}?title=${Uri.encodeComponent(
+                bean.title)}&type=4',
+            transition: TransitionType.nativeModal,
+          );
+          break;
+        case "OpenMyMeetingClass":
+        //瑜伽大会
+          Application.router.navigateTo(context,
+            '${Routes.myProduct}?title=${Uri.encodeComponent(
+                bean.title)}&type=5',
+            transition: TransitionType.nativeModal,
+          );
+          break;
+        default :
+          return;
+      }
+
     }
   }
 }

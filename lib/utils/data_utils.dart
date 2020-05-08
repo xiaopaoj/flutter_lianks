@@ -151,4 +151,20 @@ class DataUtils {
       return response;
     }
   }
+
+  static Future<Page> getMyProductList(int pageNum, int pageSize, int courseType,
+      int productType) async {
+    var response = await NetUtils.get(Api.MY_PRODUCT_LIST, {
+      "pageNum" : pageNum,
+      "pageSize" : pageSize,
+      "productType" : productType,
+      "courseType" : courseType,
+    });
+    try {
+      Page page = Page.fromMap(response['data']);
+      return page;
+    } catch (err) {
+      return response['message'];
+    }
+  }
 }
