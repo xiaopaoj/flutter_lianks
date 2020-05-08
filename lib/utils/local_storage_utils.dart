@@ -9,22 +9,28 @@ Future<SharedPreferences> prefs = SharedPreferences.getInstance();
 
 class LocalStorageUtils {
 
-  static UserInfo getUserInfo(){
-    UserInfo userInfo = prefs.then((r) {
+  static void saveUser(UserInfo userInfo){
+    prefs.then((r) {
+      r.setString("LOCAL_STORAGE_USER_INFO", jsonEncode(userInfo.toJson()));
+      r.setString("LOCAL_STORAGE_TOKEN", userInfo.token);
+    });
+  }
+
+  static Future<UserInfo> getUserInfo(){
+    return prefs.then((r) {
       String jsonStr = r.getString("LOCAL_STORAGE_USER_INFO") ?? "";
       if(jsonStr == null) {
         return new UserInfo();
       }
       return UserInfo.fromMap(jsonDecode(jsonStr));
-    }) as UserInfo;
-    return userInfo;
+    });
   }
 
-  static String getToken(){
+  static Future<String> getToken(){
     return prefs.then((r) {
       String jsonStr = r.getString("LOCAL_STORAGE_TOKEN") ?? "";
       return jsonStr;
-    }) as String;
+    });
   }
 
 }

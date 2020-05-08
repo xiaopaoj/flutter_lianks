@@ -12,10 +12,10 @@ import 'package:path_provider/path_provider.dart';
 
 import '../application.dart';
 
-Map<String, dynamic> optHeader = {
-  'accept-language': 'zh-cn',
-  'content-type': 'application/json'
-};
+//Map<String, dynamic> optHeader = {
+//  'accept-language': 'zh-cn',
+//  'content-type': 'application/json'
+//};
 
 Dio dio;
 
@@ -24,16 +24,16 @@ class NetUtils {
 
   static Dio getDio(){
     if(dio == null) {
-      dio = new Dio(BaseOptions(connectTimeout: 30000, headers: optHeader));
+      dio = new Dio(BaseOptions(connectTimeout: 30000));
       dio.interceptors.add(InterceptorsWrapper(
         onRequest: (RequestOptions options) async {
-          String token = "abd"; //LocalStorageUtils.getToken();
-          if(null != token && "" != token) {
-            optHeader.addAll({
-              "Authorization-token" : token
-            });
-            options.headers = optHeader;
-          }
+          LocalStorageUtils.getToken().then((r) {
+            if(null != r && "" != r) {
+              options.headers = {
+                "Authorization-token" : r
+              };
+            }
+          });
           return options;
         },
         onResponse:(Response response) async {
@@ -93,7 +93,9 @@ class NetUtils {
 //    var dir = new Directory("$documentsPath/cookies");
 //    await dir.create();
 //    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
-    var response = await getDio().post(url, data: params);
+    var response = await getDio().post(url, data: params, options: new Options(
+      contentType: "application/json"
+    ));
     return response.data;
   }
 }

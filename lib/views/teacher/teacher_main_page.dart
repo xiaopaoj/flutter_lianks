@@ -98,14 +98,15 @@ class _TeacherMainPage extends State<TeacherMainPage>
                     new Container(
                       width: 30,
                       height: 30,
-                      margin: EdgeInsets.only(
-                          left: 0, top: 17, right: 14, bottom: 17),
-                      child: new ClipOval(
-                        child: Image.network(
-                          null == userInfo || userInfo.headPicture.isEmpty
-                              ? 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'
-                              : userInfo.headPicture,
+                      margin: EdgeInsets.only(left: 0, top: 14, right: 14, bottom: 14),
+                      child: new CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            null == userInfo || userInfo.headPicture.isEmpty
+                                ? 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'
+                                : userInfo.headPicture,
+                            scale: 30
                         ),
+                        radius: 30,
                       ),
                     ),
                   ],

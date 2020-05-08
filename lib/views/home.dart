@@ -1,9 +1,9 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterapp/event/event_model.dart';
 import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/routes/routes.dart';
+import 'package:flutterapp/utils/local_storage_utils.dart';
 import 'package:flutterapp/views/live/live_main_page.dart';
 import 'package:flutterapp/views/product/product_main_page.dart';
 import 'package:flutterapp/views/teacher/teacher_main_page.dart';
@@ -12,10 +12,6 @@ import 'package:flutterapp/views/user/user_main_page.dart';
 import '../application.dart';
 
 class AppHomePage extends StatefulWidget {
-
-  final UserInfo userInfo;
-
-  AppHomePage(this.userInfo);
 
   @override
   State<StatefulWidget> createState() {
@@ -26,6 +22,8 @@ class AppHomePage extends StatefulWidget {
 
 class _AppHomePage extends State<AppHomePage>
     with SingleTickerProviderStateMixin {
+
+  UserInfo _userInfo;
 
   int _currentIndex = 0;
 
@@ -69,12 +67,29 @@ class _AppHomePage extends State<AppHomePage>
       _list.add(new Container());
     });
 
+    LocalStorageUtils.getUserInfo().then((r) {
+      if(null != r) {
+        if(mounted) {
+          _userInfo = r;
+        }
+      }
+    });
+
 
     Application.eventBus.on<NoLoginEvent>().listen((event) {
       print('接收到的 event 没有登录');
       Application.router.navigateTo(context, '${Routes.login}',
         transition: TransitionType.nativeModal,
       );
+    });
+
+    Application.eventBus.on<LoginEvent>().listen((event) {
+      print('接收到的 event 登录成功');
+      setState(() {
+        LocalStorageUtils.getUserInfo().then((r) {
+          _userInfo = r;
+        });
+      });
     });
   }
 
@@ -104,22 +119,22 @@ class _AppHomePage extends State<AppHomePage>
       switch(index){
         case 0 :
           if(_list[index] is Container){
-            _list[index] = new LiveMainPage(null);
+            _list[index] = new LiveMainPage(_userInfo);
           }
           break;
         case 1 :
           if(_list[index] is Container){
-            _list[index] = new ProductMainPage(null);
+            _list[index] = new ProductMainPage(_userInfo);
           }
           break;
         case 2 :
           if(_list[index] is Container){
-            _list[index] = new TeacherMainPage(null);
+            _list[index] = new TeacherMainPage(_userInfo);
           }
           break;
         case 3 :
           if(_list[index] is Container){
-            UserMainPage u = new UserMainPage(null);
+            UserMainPage u = new UserMainPage(_userInfo);
             _list[index] = u;
           } else {
             UserMainPage u = _list[index];

@@ -20,4 +20,7 @@ class Api {
 
   static const String MY_INDEX_INFO = BASE_URL + "/api/user/info/getMyIndexInfo";
 
+  static const String VALID_CODE = BASE_URL + "/oauth/validCode";
+
+  static const String LOGIN_V2 = BASE_URL + "/oauth/loginV2";
 }

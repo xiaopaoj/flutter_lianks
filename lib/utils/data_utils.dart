@@ -4,8 +4,12 @@ import 'package:flutterapp/model/dict.dart';
 import 'package:flutterapp/model/live_top.dart';
 import 'package:flutterapp/model/page.dart';
 import 'package:flutterapp/model/product.dart';
+import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/model/user_page_data.dart';
 import 'package:flutterapp/utils/net_utils.dart';
+import 'package:flutterapp/utils/toast_utils.dart';
+
+import 'local_storage_utils.dart';
 
 class DataUtils {
 
@@ -113,6 +117,38 @@ class DataUtils {
       return UserPageData.fromMap(response['data']);
     } catch (err) {
       return response['message'];
+    }
+  }
+
+  static Future<bool> getValidCode(String phone) async {
+    var response = await NetUtils.get(Api.VALID_CODE, {
+      "phone": phone
+    });
+    try {
+      ToastUtils.showMessage(response['message']);
+      if(response['code'] == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      return response;
+    }
+  }
+
+  static Future<bool> loginV2(Map<String, dynamic> params) async {
+    var response = await NetUtils.post(Api.LOGIN_V2, params);
+    try {
+      if(response['code'] == 200) {
+        ToastUtils.showMessage("登录成功");
+        LocalStorageUtils.saveUser(UserInfo.fromMap(response['data']));
+        return true;
+      } else {
+        ToastUtils.showMessage(response['message']);
+        return false;
+      }
+    } catch (err) {
+      return response;
     }
   }
 }

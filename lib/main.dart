@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterapp/application.dart';
+import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/views/home.dart';
 import 'package:fluwx/fluwx.dart';
@@ -27,7 +28,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
 
   _MyAppState(){
     final eventBus = new EventBus();
@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
         ),
       );
     } else {
-      return new AppHomePage(null);
+      return new AppHomePage();
     }
     
   }
