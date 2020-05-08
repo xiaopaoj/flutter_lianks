@@ -167,4 +167,32 @@ class DataUtils {
       return response['message'];
     }
   }
+
+  static Future<List<Dict>> getCollectionsTags() async {
+    var response = await NetUtils.get(Api.COLLECTIONS_TAGS);
+    try {
+      List data = response['data'];
+      return data.map((r){
+        return Dict.fromMap(r);
+      }).toList();
+    } catch (err) {
+      return response['message'];
+    }
+  }
+
+  static Future<Page> getCollectionsList(int pageNum, int pageSize, int sourceType,
+      int productType) async {
+    var response = await NetUtils.get(Api.COLLECTIONS_LIST, {
+      "pageNum" : pageNum,
+      "pageSize" : pageSize,
+      "sourceType" : sourceType,
+      "productType" : productType,
+    });
+    try {
+      Page page = Page.fromMap(response['data']);
+      return page;
+    } catch (err) {
+      return response['message'];
+    }
+  }
 }

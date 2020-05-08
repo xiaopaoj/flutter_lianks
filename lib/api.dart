@@ -25,4 +25,8 @@ class Api {
   static const String LOGIN_V2 = BASE_URL + "/oauth/loginV2";
 
   static const String MY_PRODUCT_LIST = BASE_URL + "/api/user/my/productList";
+
+  static const String COLLECTIONS_TAGS = BASE_URL + "/api/collections/tags";
+
+  static const String COLLECTIONS_LIST = BASE_URL + "/api/collections/list";
 }

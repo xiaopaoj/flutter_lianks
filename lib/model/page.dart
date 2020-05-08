@@ -5,7 +5,7 @@ class Page {
   int pageSize;
   int pages;
   int size;
-  String totalRows;
+  int totalRows;
 
   static Page fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
@@ -17,7 +17,7 @@ class Page {
     pageBean.pageSize = map['pageSize'];
     pageBean.pages = map['pages'];
     pageBean.size = map['size'];
-    pageBean.totalRows = map['totalRows'];
+    pageBean.totalRows = int.parse(map['totalRows']);
     return pageBean;
   }
 

@@ -53,4 +53,25 @@ class LiveClass {
     return liveClass;
   }
 
+  static LiveClass fromCollectionListApi(dynamic map, title){
+    if (map == null) return null;
+    LiveClass liveClass = LiveClass();
+    liveClass.showImage = map['listImage'];
+    liveClass.teacherName = map['teacherName'];
+    liveClass.tagName = map['tagName'];
+    liveClass.firstLabel = map['productName'];
+    if(map['isPack'] == 0) {
+      liveClass.secondLabel = map['packName'];
+    } else {
+      liveClass.secondLabel = map['updatedCount'] + "  " + map['planCount'];
+    }
+
+    liveClass.thirdLabel = map['dateTimeStr'] + "   " + map['payCount'].toString() +  "人报名";
+    liveClass.originalPrice = map['originalPrice'];
+    liveClass.standardPrice = map['standardPrice'];
+    liveClass.detailUrl = map['detailUrl'];
+    liveClass.title = title;
+    return liveClass;
+  }
+
 }

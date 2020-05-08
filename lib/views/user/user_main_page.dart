@@ -472,6 +472,13 @@ class _UserMainPage extends State<UserMainPage>
             transition: TransitionType.nativeModal,
           );
           break;
+        case "OpenMyFavoritesClass":
+        //瑜伽大会
+          Application.router.navigateTo(context,
+            '${Routes.myCollectionProduct}',
+            transition: TransitionType.nativeModal,
+          );
+          break;
         default :
           return;
       }
