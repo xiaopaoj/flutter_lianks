@@ -35,14 +35,8 @@ class _ProductListPage extends State<ProductListPage> {
   @override
   void initState() {
     super.initState();
-    DataUtils.getProductRecommendList(widget.courseType).then((r) {
-      if(mounted) {
-        setState(() {
-          _recommendList.addAll(r);
-        });
-      }
-    });
 
+    _getTop();
     _getList();
   }
 
@@ -50,6 +44,16 @@ class _ProductListPage extends State<ProductListPage> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _getTop() async {
+    DataUtils.getProductRecommendList(widget.courseType).then((r) {
+      if(mounted) {
+        setState(() {
+          _recommendList.addAll(r);
+        });
+      }
+    });
   }
 
   void _getList() async {
@@ -149,6 +153,7 @@ class _ProductListPage extends State<ProductListPage> {
       _pageNum = 1;
       _list = [];
       _getList();
+      _getTop();
     });
 
   }

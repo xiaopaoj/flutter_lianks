@@ -1,22 +1,22 @@
 
 class UserPageData {
   BaseInfoBean baseInfo;
-  List<ClassInfoBean> classInfo;
-  List<MarketInfoBean> marketInfo;
-  List<SelfInfoBean> selfInfo;
+  List<ButtonBean> classInfo;
+  List<ButtonBean> marketInfo;
+  List<ButtonBean> selfInfo;
 
   static UserPageData fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
     UserPageData userPageDataBean = UserPageData();
     userPageDataBean.baseInfo = BaseInfoBean.fromMap(map['baseInfo']);
     userPageDataBean.classInfo = List()..addAll(
-      (map['classInfo'] as List ?? []).map((o) => ClassInfoBean.fromMap(o))
+      (map['classInfo'] as List ?? []).map((o) => ButtonBean.fromMap(o))
     );
     userPageDataBean.marketInfo = List()..addAll(
-      (map['marketInfo'] as List ?? []).map((o) => MarketInfoBean.fromMap(o))
+      (map['marketInfo'] as List ?? []).map((o) => ButtonBean.fromMap(o))
     );
     userPageDataBean.selfInfo = List()..addAll(
-      (map['selfInfo'] as List ?? []).map((o) => SelfInfoBean.fromMap(o))
+      (map['selfInfo'] as List ?? []).map((o) => ButtonBean.fromMap(o))
     );
     return userPageDataBean;
   }
@@ -30,77 +30,22 @@ class UserPageData {
 }
 
 
-class SelfInfoBean {
+class ButtonBean {
   String desc;
   String icon;
   String tips;
   String title;
   String url;
 
-  static SelfInfoBean fromMap(Map<String, dynamic> map) {
+  static ButtonBean fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
-    SelfInfoBean selfInfoBean = SelfInfoBean();
-    selfInfoBean.desc = map['desc'];
-    selfInfoBean.icon = map['icon'];
-    selfInfoBean.tips = map['tips'];
-    selfInfoBean.title = map['title'];
-    selfInfoBean.url = map['url'];
-    return selfInfoBean;
-  }
-
-  Map toJson() => {
-    "desc": desc,
-    "icon": icon,
-    "tips": tips,
-    "title": title,
-    "url": url,
-  };
-}
-
-class MarketInfoBean {
-  String desc;
-  String icon;
-  String tips;
-  String title;
-  String url;
-
-  static MarketInfoBean fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-    MarketInfoBean marketInfoBean = MarketInfoBean();
-    marketInfoBean.desc = map['desc'];
-    marketInfoBean.icon = map['icon'];
-    marketInfoBean.tips = map['tips'];
-    marketInfoBean.title = map['title'];
-    marketInfoBean.url = map['url'];
-    return marketInfoBean;
-  }
-
-  Map toJson() => {
-    "desc": desc,
-    "icon": icon,
-    "tips": tips,
-    "title": title,
-    "url": url,
-  };
-}
-
-
-class ClassInfoBean {
-  String desc;
-  String icon;
-  String tips;
-  String title;
-  String url;
-
-  static ClassInfoBean fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-    ClassInfoBean classInfoBean = ClassInfoBean();
-    classInfoBean.desc = map['desc'];
-    classInfoBean.icon = map['icon'];
-    classInfoBean.tips = map['tips'];
-    classInfoBean.title = map['title'];
-    classInfoBean.url = map['url'];
-    return classInfoBean;
+    ButtonBean buttonBean = ButtonBean();
+    buttonBean.desc = map['desc'];
+    buttonBean.icon = map['icon'];
+    buttonBean.tips = map['tips'];
+    buttonBean.title = map['title'];
+    buttonBean.url = map['url'];
+    return buttonBean;
   }
 
   Map toJson() => {

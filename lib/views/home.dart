@@ -134,11 +134,10 @@ class _AppHomePage extends State<AppHomePage>
           break;
         case 3 :
           if(_list[index] is Container){
-            UserMainPage u = new UserMainPage(_userInfo);
+            UserMainPage u = new UserMainPage();
             _list[index] = u;
           } else {
             UserMainPage u = _list[index];
-            u.createState().initState();
           }
           break;
         default :

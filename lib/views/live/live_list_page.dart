@@ -52,6 +52,18 @@ class _LiveListPage extends State<LiveListPage> {
       }
     });
 
+
+    _getTop();
+    _getList();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _getTop() async {
     DataUtils.getLiveTop().then((r) {
       if (mounted) {
         setState(() {
@@ -60,14 +72,6 @@ class _LiveListPage extends State<LiveListPage> {
         });
       }
     });
-
-    _getList();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 
   void _getList() async {
@@ -182,6 +186,7 @@ class _LiveListPage extends State<LiveListPage> {
       _pageNum = 1;
       _list = [];
       _getList();
+      _getTop();
     });
 
   }

@@ -33,7 +33,6 @@ class _WebDetailPage extends State<WebDetailPage> {
   }
 
   wxShareSession(){
-    print("123123123123123123123123123123123123123123123");
     ToastUtils.showMessage("点击了按钮");
   }
 
@@ -78,10 +77,13 @@ class _WebDetailPage extends State<WebDetailPage> {
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
           _controller = controller;
+          LocalStorageUtils.getToken().then((r) {
+            _controller.evaluateJavascript("document.cookie = 'Token=$r'");
+          });
+          _controller.evaluateJavascript("document.cookie = 'appName=lianks'");
         },
         onPageFinished: (String value) {
-          _controller.evaluateJavascript("document.cookie = 'Token=${LocalStorageUtils.getToken()}'");
-          _controller.evaluateJavascript("document.cookie = 'appName=lianks'");
+
         },
         javascriptChannels: <JavascriptChannel>[
           _jsBridge(context) // 与h5 通信
