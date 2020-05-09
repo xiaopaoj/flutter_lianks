@@ -7,7 +7,7 @@ class Teacher {
   String listImage;
   double score;
   String slogan;
-  String startsPrice;
+  int startsPrice;
   int teachDate;
   String teachSect;
   int teacherGrade;
@@ -27,9 +27,9 @@ class Teacher {
     teacherBean.isSign = map['isSign'];
     teacherBean.likeFlag = map['likeFlag'];
     teacherBean.listImage = map['listImage'];
-    teacherBean.score = map['score'];
+    teacherBean.score = double.parse("${map['score']}");
     teacherBean.slogan = map['slogan'];
-    teacherBean.startsPrice = map['startsPrice'];
+    teacherBean.startsPrice = (map['startsPrice'] is String ? int.parse(map['startsPrice']) : map['startsPrice']);
     teacherBean.teachDate = map['teachDate'];
     teacherBean.teachSect = map['teachSect'];
     teacherBean.teacherGrade = map['teacherGrade'];

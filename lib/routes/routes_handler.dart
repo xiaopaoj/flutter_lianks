@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutterapp/views/user/collection/my_collection_product.dart';
+import 'package:flutterapp/views/user/collection/my_collection_teacher.dart';
 import 'package:flutterapp/views/user/order/my_order_main_page.dart';
 import 'package:flutterapp/views/user/product/my_product_main_page.dart';
 import 'package:flutterapp/views/user/login_page.dart';
@@ -31,6 +32,12 @@ var myProductHandler = new Handler(
 var myCollectionProductHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     return new MyCollectionProductPage();
+  },
+);
+
+var myCollectionTeacherHandler = new Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    return new MyCollectionTeacher();
   },
 );
 

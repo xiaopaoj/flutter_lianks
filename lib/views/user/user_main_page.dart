@@ -471,14 +471,21 @@ class _UserMainPage extends State<UserMainPage>
           );
           break;
         case "OpenMyFavoritesClass":
-        //瑜伽大会
+        //收藏
           Application.router.navigateTo(context,
             '${Routes.myCollectionProduct}',
             transition: TransitionType.nativeModal,
           );
           break;
+        case "OpenMyFavoritesTeacher":
+        //收藏
+          Application.router.navigateTo(context,
+            '${Routes.myCollectionTeacher}',
+            transition: TransitionType.nativeModal,
+          );
+          break;
         case "OpenMyOrderList":
-        //瑜伽大会
+        //订单
           Application.router.navigateTo(context,
             '${Routes.myOrder}',
             transition: TransitionType.nativeModal,

@@ -75,6 +75,11 @@ class _AppHomePage extends State<AppHomePage>
       }
     });
 
+    setState(() {
+      if(mounted) {
+        _itemTapped(0);
+      }
+    });
 
     Application.eventBus.on<NoLoginEvent>().listen((event) {
       print('接收到的 event 没有登录');
