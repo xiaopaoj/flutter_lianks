@@ -29,4 +29,6 @@ class Api {
   static const String COLLECTIONS_TAGS = BASE_URL + "/api/collections/tags";
 
   static const String COLLECTIONS_LIST = BASE_URL + "/api/collections/list";
+
+  static const String MY_ORDERS_LIST = BASE_URL + "/api/order/myOrders";
 }

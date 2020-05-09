@@ -436,8 +436,6 @@ class _UserMainPage extends State<UserMainPage>
       );
     } else if(url.contains("LIANKS_NH://")) {
       url = url.replaceAll("LIANKS_NH://", "");
-      // 跳转原生
-      ToastUtils.showMessage("跳转$url");
 
       switch (url) {
         case "OpenMyTeacherClass":
@@ -479,7 +477,16 @@ class _UserMainPage extends State<UserMainPage>
             transition: TransitionType.nativeModal,
           );
           break;
+        case "OpenMyOrderList":
+        //瑜伽大会
+          Application.router.navigateTo(context,
+            '${Routes.myOrder}',
+            transition: TransitionType.nativeModal,
+          );
+          break;
         default :
+        // 跳转原生
+          ToastUtils.showMessage("跳转$url");
           return;
       }
 

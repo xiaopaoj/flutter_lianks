@@ -195,4 +195,19 @@ class DataUtils {
       return response['message'];
     }
   }
+
+  static Future<Page> getMyOrderList(int pageNum, int pageSize,
+      int orderStatus) async {
+    var response = await NetUtils.get(Api.MY_ORDERS_LIST, {
+      "pageNum" : pageNum,
+      "pageSize" : pageSize,
+      "orderStatus" : orderStatus,
+    });
+    try {
+      Page page = Page.fromMap(response['data']);
+      return page;
+    } catch (err) {
+      return response['message'];
+    }
+  }
 }

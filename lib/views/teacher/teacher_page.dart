@@ -27,7 +27,9 @@ class _TeacherPage extends State<TeacherPage> {
       return new GestureDetector(
         onTap: (){
           Application.router.navigateTo(context,
-            '${Routes.webDetail}?url=${Uri.encodeComponent(widget.teacher.detailUrl)}&title=${Uri.encodeComponent(widget.teacher.teacherName)}',
+            '${Routes.webDetail}?url=${Uri.encodeComponent(
+                widget.teacher.detailUrl)}&title=${Uri.encodeComponent(
+                widget.teacher.teacherName)}&showShare=1',
             transition: TransitionType.nativeModal,
           );
         },
@@ -46,7 +48,9 @@ class _TeacherPage extends State<TeacherPage> {
       return new GestureDetector(
         onTap: (){
           Application.router.navigateTo(context,
-            '${Routes.webDetail}?url=${Uri.encodeComponent(widget.teacher.detailUrl)}&title=${Uri.encodeComponent(widget.teacher.teacherName)}',
+            '${Routes.webDetail}?url=${Uri.encodeComponent(
+                widget.teacher.detailUrl)}&title=${Uri.encodeComponent(
+                widget.teacher.teacherName)}&showShare=1',
             transition: TransitionType.nativeModal,
           );
         },

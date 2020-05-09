@@ -14,7 +14,9 @@ class WebDetailPage extends StatefulWidget {
 
   final String title;
 
-  WebDetailPage(this.url, this.title);
+  final int showShare;
+
+  WebDetailPage(this.url, this.title, {this.showShare});
 
   @override
   State<WebDetailPage> createState() => new _WebDetailPage();
@@ -61,7 +63,10 @@ class _WebDetailPage extends State<WebDetailPage> {
               Navigator.pop(context);
             }
         ),
+
         actions: <Widget>[
+          widget.showShare == null || widget.showShare != 1 ?
+          new Container() :
           new IconButton(
               icon: Image.asset("assets/images/icon/default/icon_fengxiang@3x.png", width: 20, height: 20,),
               onPressed: () {
