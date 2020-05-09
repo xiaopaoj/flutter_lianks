@@ -1,24 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/live/live_list_page.dart';
 import 'package:flutterapp/views/product/product_list_page.dart';
 
-class ProductMainPage extends StatefulWidget {
-  final UserInfo userInfo;
+import '../../application.dart';
 
-  ProductMainPage(this.userInfo);
+class ProductMainPage extends StatefulWidget {
 
   @override
-  State<ProductMainPage> createState() => _ProductMainPage(this.userInfo);
+  State<ProductMainPage> createState() => _ProductMainPage();
 }
 
 class _ProductMainPage extends State<ProductMainPage>
     with SingleTickerProviderStateMixin {
-  UserInfo userInfo;
-
-  _ProductMainPage(this.userInfo);
 
   List<Tab> _list = [];
 
@@ -100,9 +94,9 @@ class _ProductMainPage extends State<ProductMainPage>
                       margin: EdgeInsets.only(left: 0, top: 14, right: 14, bottom: 14),
                       child: new CircleAvatar(
                         backgroundImage: NetworkImage(
-                            null == userInfo || userInfo.headPicture.isEmpty
+                            null == Application.userInfo || Application.userInfo.headPicture.isEmpty
                                 ? 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'
-                                : userInfo.headPicture,
+                                : Application.userInfo.headPicture,
                             scale: 30
                         ),
                         radius: 30,

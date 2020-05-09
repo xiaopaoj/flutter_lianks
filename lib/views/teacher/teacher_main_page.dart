@@ -1,25 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/live/live_list_page.dart';
-import 'package:flutterapp/views/product/product_list_page.dart';
 import 'package:flutterapp/views/teacher/teacher_list_page.dart';
 
-class TeacherMainPage extends StatefulWidget {
-  final UserInfo userInfo;
+import '../../application.dart';
 
-  TeacherMainPage(this.userInfo);
+class TeacherMainPage extends StatefulWidget {
 
   @override
-  State<TeacherMainPage> createState() => _TeacherMainPage(this.userInfo);
+  State<TeacherMainPage> createState() => _TeacherMainPage();
 }
 
 class _TeacherMainPage extends State<TeacherMainPage>
     with SingleTickerProviderStateMixin {
-  UserInfo userInfo;
-
-  _TeacherMainPage(this.userInfo);
 
   List<Tab> _list = [];
 
@@ -101,9 +94,9 @@ class _TeacherMainPage extends State<TeacherMainPage>
                       margin: EdgeInsets.only(left: 0, top: 14, right: 14, bottom: 14),
                       child: new CircleAvatar(
                         backgroundImage: NetworkImage(
-                            null == userInfo || userInfo.headPicture.isEmpty
+                            null == Application.userInfo || Application.userInfo.headPicture.isEmpty
                                 ? 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'
-                                : userInfo.headPicture,
+                                : Application.userInfo.headPicture,
                             scale: 30
                         ),
                         radius: 30,

@@ -1,24 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/user_info.dart';
 
+import '../../application.dart';
 import 'live_list_page.dart';
 
 DefaultTabController _tabController;
 
 class LiveMainPage extends StatefulWidget {
-  final UserInfo userInfo;
-
-  LiveMainPage(this.userInfo);
 
   @override
-  State<LiveMainPage> createState() => _LiveMainPage(this.userInfo);
+  State<LiveMainPage> createState() => _LiveMainPage();
 }
 
 class _LiveMainPage extends State<LiveMainPage> with SingleTickerProviderStateMixin {
-  UserInfo userInfo;
-
-  _LiveMainPage(this.userInfo);
 
   List<Tab> _list = [];
 
@@ -40,6 +34,7 @@ class _LiveMainPage extends State<LiveMainPage> with SingleTickerProviderStateMi
       ..add(new Tab(icon: new Text("回放", textAlign: TextAlign.left,) ));
 
     tabController = new TabController(length: _list.length, vsync: this);
+
   }
 
   @override
@@ -81,9 +76,9 @@ class _LiveMainPage extends State<LiveMainPage> with SingleTickerProviderStateMi
                 margin: EdgeInsets.only(left: 0, top: 14, right: 14, bottom: 14),
                 child: new CircleAvatar(
                   backgroundImage: NetworkImage(
-                    null == userInfo || userInfo.headPicture.isEmpty
+                    null == Application.userInfo || Application.userInfo.headPicture.isEmpty
                         ? 'https://hbimg.huabanimg.com/9bfa0fad3b1284d652d370fa0a8155e1222c62c0bf9d-YjG0Vt_fw658'
-                        : userInfo.headPicture,
+                        : Application.userInfo.headPicture,
                     scale: 30
                   ),
                   radius: 30,

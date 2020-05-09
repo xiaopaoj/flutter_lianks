@@ -1,7 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/event/event_model.dart';
-import 'package:flutterapp/model/user_info.dart';
 import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/utils/local_storage_utils.dart';
 import 'package:flutterapp/views/live/live_main_page.dart';
@@ -23,7 +22,6 @@ class AppHomePage extends StatefulWidget {
 class _AppHomePage extends State<AppHomePage>
     with SingleTickerProviderStateMixin {
 
-  UserInfo _userInfo;
 
   int _currentIndex = 0;
 
@@ -70,7 +68,7 @@ class _AppHomePage extends State<AppHomePage>
     LocalStorageUtils.getUserInfo().then((r) {
       if(null != r) {
         if(mounted) {
-          _userInfo = r;
+          Application.userInfo = r;
         }
       }
     });
@@ -92,7 +90,7 @@ class _AppHomePage extends State<AppHomePage>
       print('接收到的 event 登录成功');
       setState(() {
         LocalStorageUtils.getUserInfo().then((r) {
-          _userInfo = r;
+          Application.userInfo = r;
         });
       });
     });
@@ -120,30 +118,18 @@ class _AppHomePage extends State<AppHomePage>
 
   void _itemTapped(int index) {
     setState(() {
-
       switch(index){
         case 0 :
-          if(_list[index] is Container){
-            _list[index] = new LiveMainPage(_userInfo);
-          }
+            _list[index] = new LiveMainPage();
           break;
         case 1 :
-          if(_list[index] is Container){
-            _list[index] = new ProductMainPage(_userInfo);
-          }
+            _list[index] = new ProductMainPage();
           break;
         case 2 :
-          if(_list[index] is Container){
-            _list[index] = new TeacherMainPage(_userInfo);
-          }
+            _list[index] = new TeacherMainPage();
           break;
         case 3 :
-          if(_list[index] is Container){
-            UserMainPage u = new UserMainPage();
-            _list[index] = u;
-          } else {
-            UserMainPage u = _list[index];
-          }
+            _list[index] = new UserMainPage();
           break;
         default :
           _list[index] = new Container();

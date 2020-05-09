@@ -11,6 +11,7 @@ import 'package:flutterapp/utils/reg_utils.dart';
 import 'package:flutterapp/utils/toast_utils.dart';
 
 import '../../application.dart';
+import '../home.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -188,8 +189,11 @@ class _LoginPage extends State<LoginPage> {
                     "validCode" : _validCode,
                   }).then((r) {
                     if(r) {
+                      _validCodeController.clear();
                       Application.eventBus.fire(LoginEvent());
-                      Navigator.pop(context);
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (context) => AppHomePage()),
+                              (route) => route == null);
                     }
                   });
                 },

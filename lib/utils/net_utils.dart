@@ -29,9 +29,9 @@ class NetUtils {
         onRequest: (RequestOptions options) async {
           LocalStorageUtils.getToken().then((r) {
             if(null != r && "" != r) {
-              options.headers = {
+              options.headers.addAll({
                 "Authorization-token" : r
-              };
+              });
             }
           });
           return options;
@@ -94,7 +94,10 @@ class NetUtils {
 //    await dir.create();
 //    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
     var response = await getDio().post(url, data: params, options: new Options(
-      contentType: "application/json"
+      contentType: "application/json",
+      headers: {
+        "Content-type" : "application/json"
+      }
     ));
     return response.data;
   }

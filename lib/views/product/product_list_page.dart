@@ -1,11 +1,15 @@
 
+import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutterapp/model/page.dart';
 import 'package:flutterapp/model/product.dart';
+import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/utils/data_utils.dart';
 import 'package:flutterapp/views/product/product_class_page.dart';
+
+import '../../application.dart';
 
 class ProductListPage extends StatefulWidget {
 
@@ -20,7 +24,9 @@ class ProductListPage extends StatefulWidget {
 class _ProductListPage extends State<ProductListPage> {
 
 
-  ScrollController _scrollController = new ScrollController();
+  ScrollController _scrollController;
+
+  SwiperController _swiperController;
 
   List<Product> _recommendList = [];
 
@@ -38,6 +44,10 @@ class _ProductListPage extends State<ProductListPage> {
 
     _getTop();
     _getList();
+
+    _scrollController = new ScrollController();
+
+    _swiperController = new SwiperController();
   }
 
   @override
@@ -126,13 +136,24 @@ class _ProductListPage extends State<ProductListPage> {
       return new Container(
         child: new Container(
           child: new Swiper(
+            controller: _swiperController,
             itemWidth: 315,
             itemHeight: 394,
             itemCount: _recommendList.length,
             itemBuilder: (BuildContext context, int index) {
-              return new Image.network(
-                _recommendList[index].listImage,
-                fit: BoxFit.fill,
+              return GestureDetector(
+                onTap: (){
+                  Application.router.navigateTo(context,
+                    '${Routes.webDetail}?url=${Uri.encodeComponent(
+                        _recommendList[index].detailUrl)}&title=${Uri.encodeComponent(
+                        _recommendList[index].productName)}&showShare=1',
+                    transition: TransitionType.nativeModal,
+                  );
+                },
+                child: new Image.network(
+                  _recommendList[index].listImage,
+                  fit: BoxFit.fill,
+                ),
               );
             },
             pagination: new SwiperPagination(),

@@ -1,17 +1,11 @@
-import 'dart:io';
-
-import 'package:event_bus/event_bus.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/user_info.dart';
+import 'package:flutterapp/event/event_model.dart';
 import 'package:flutterapp/model/user_page_data.dart';
 import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/utils/data_utils.dart';
 import 'package:flutterapp/utils/toast_utils.dart';
-import 'package:flutterapp/views/live/live_list_page.dart';
-import 'package:flutterapp/views/product/product_list_page.dart';
-import 'package:flutterapp/views/teacher/teacher_list_page.dart';
 
 import '../../application.dart';
 
@@ -32,6 +26,17 @@ class _UserMainPage extends State<UserMainPage>
   @override
   void initState() {
     super.initState();
+
+    _getMyIndexInfo();
+
+
+    Application.eventBus.on<LoginEvent>().listen((event) {
+      print('接收到的 event 登录成功');
+      _getMyIndexInfo();
+    });
+  }
+
+  void _getMyIndexInfo() {
     DataUtils.getMyIndexInfo().then((r) {
       setState(() {
         if(mounted) {
