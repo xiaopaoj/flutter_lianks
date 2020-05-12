@@ -37,7 +37,7 @@ class NetUtils {
           return options;
         },
         onResponse:(Response response) async {
-          print("interceptors==============>${response.data}");
+//          print("interceptors==============>${response.data}");
           int code = response.data['code'];
           if(code == 401) {
             // 未登录，跳转登录页面
