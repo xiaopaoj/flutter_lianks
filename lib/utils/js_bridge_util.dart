@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:fluro/fluro.dart';
+import 'package:flutterapp/application.dart';
+import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/views/web/share_page.dart';
 
 import 'Js_bridge.dart';
@@ -15,15 +18,25 @@ class JsBridgeUtil {
   /// 向H5开发接口调用
   static executeMethod(context, JsBridge jsBridge) async {
     if (jsBridge.method == 'LianksAppHandler') {
+      print("jsBridge.data===========${jsBridge.data}");
       int actionType = jsBridge.data['actionType'];
       if(actionType == 1) {
+        // 分享朋友圈
         List content = jsBridge.data['content'];
         if(content[1] == null || content[1] == "") {
           return;
         }
         // 唤起分享窗口
         share(context, content);
-      } else {
+      } else if(actionType == 9) {
+        // 查看回放
+        List content = jsBridge.data['content'];
+        Application.router.navigateTo(context,
+          '${Routes.liveVideo}?url=${Uri.encodeComponent(
+              content[1])}',
+          transition: TransitionType.nativeModal,
+        );
+      }else {
         ToastUtils.showMessage("其他调用");
       }
 

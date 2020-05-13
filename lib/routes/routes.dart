@@ -9,6 +9,7 @@ class Routes {
   static String myCollectionProduct = "/myCollectionProduct";
   static String myCollectionTeacher = "/myCollectionTeacher";
   static String myOrder = "/myOrderHandler";
+  static String liveVideo = "/LiveVideoHandler";
 
   static void configureRoutes(Router router) {
     router.define(webDetail, handler: webDetailHandler);
@@ -17,5 +18,6 @@ class Routes {
     router.define(myCollectionProduct, handler: myCollectionProductHandler);
     router.define(myCollectionTeacher, handler: myCollectionTeacherHandler);
     router.define(myOrder, handler: myOrderHandler);
+    router.define(liveVideo, handler: LiveVideoHandler);
   }
 }

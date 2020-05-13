@@ -5,6 +5,7 @@ import 'package:flutterapp/views/user/collection/my_collection_teacher.dart';
 import 'package:flutterapp/views/user/order/my_order_main_page.dart';
 import 'package:flutterapp/views/user/product/my_product_main_page.dart';
 import 'package:flutterapp/views/user/login_page.dart';
+import 'package:flutterapp/views/video/live_video_page.dart';
 import 'package:flutterapp/views/web/web_detail_page.dart';
 
 var webDetailHandler = new Handler(
@@ -44,5 +45,11 @@ var myCollectionTeacherHandler = new Handler(
 var myOrderHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {
     return new MyOrderMainPage();
+  },
+);
+
+var LiveVideoHandler = new Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    return new LiveVideoPage(params['url'].first);
   },
 );

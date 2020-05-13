@@ -34,6 +34,7 @@ dependencies:
   fluttertoast: ^4.0.0
   fluwx: ^2.0.8+3
   shared_preferences: ^0.5.7
+  awsome_video_player: ^1.0.8+1
 
 dev_dependencies:
   flutter_test:
