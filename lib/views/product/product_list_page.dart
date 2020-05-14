@@ -52,7 +52,7 @@ class _ProductListPage extends State<ProductListPage> {
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _scrollController?.dispose();
     super.dispose();
   }
 

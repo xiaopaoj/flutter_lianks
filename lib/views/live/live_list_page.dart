@@ -59,7 +59,7 @@ class _LiveListPage extends State<LiveListPage> {
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _scrollController?.dispose();
     super.dispose();
   }
 
@@ -78,8 +78,10 @@ class _LiveListPage extends State<LiveListPage> {
     DataUtils.getLiveList(_pageNum, _pageSize, widget.liveType,
         widget.isPast).then((r) {
       setState(() {
-        _page = r;
-        _list.addAll(_page.dataList);
+        if(mounted) {
+          _page = r;
+          _list.addAll(_page.dataList);
+        }
       });
     });
   }

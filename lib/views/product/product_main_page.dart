@@ -48,8 +48,8 @@ class _ProductMainPage extends State<ProductMainPage>
 
   @override
   void dispose() {
-    _scrollViewController.dispose();
-    _tabController.dispose();
+    _scrollViewController?.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 

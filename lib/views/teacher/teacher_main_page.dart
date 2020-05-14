@@ -48,8 +48,8 @@ class _TeacherMainPage extends State<TeacherMainPage>
 
   @override
   void dispose() {
-    _scrollViewController.dispose();
-    _tabController.dispose();
+    _scrollViewController?.dispose();
+    _tabController?.dispose();
     super.dispose();
   }
 

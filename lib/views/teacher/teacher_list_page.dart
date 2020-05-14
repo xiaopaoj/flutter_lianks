@@ -40,7 +40,7 @@ class _TeacherListPage extends State<TeacherListPage> {
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _scrollController?.dispose();
     super.dispose();
   }
 
