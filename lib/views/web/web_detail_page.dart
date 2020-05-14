@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/application.dart';
 import 'package:flutterapp/utils/data_utils.dart';
 import 'package:flutterapp/utils/local_storage_utils.dart';
 import 'package:flutterapp/utils/toast_utils.dart';
@@ -82,13 +83,11 @@ class _WebDetailPage extends State<WebDetailPage> {
         javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
           _controller = controller;
-          LocalStorageUtils.getToken().then((r) {
-            _controller.evaluateJavascript("document.cookie = 'Token=$r'");
-          });
+          print('Token=${Application.userInfo?.token}');
+          _controller.evaluateJavascript("document.cookie = 'Token=${Application.userInfo?.token}'");
           _controller.evaluateJavascript("document.cookie = 'appName=lianks'");
         },
         onPageFinished: (String value) {
-
         },
         javascriptChannels: <JavascriptChannel>[
           _jsBridge(context) // 与h5 通信
