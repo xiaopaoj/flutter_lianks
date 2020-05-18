@@ -23,6 +23,10 @@ class _UserMainPage extends State<UserMainPage>
 
   List<Widget> mTabView = []; //使用widget的形式
 
+  double classInfoHeight = 214;
+
+  double selfInfoHeight = 214;
+
   @override
   void initState() {
     super.initState();
@@ -41,6 +45,23 @@ class _UserMainPage extends State<UserMainPage>
       setState(() {
         if(mounted) {
           _userPageData = r;
+
+          double ch = _userPageData.classInfo.length / 3;
+          if(_userPageData.classInfo.length % 3 > 1) {
+            ch = ch + 1;
+
+
+          }
+          classInfoHeight =  ch.toInt() * 107.0;
+
+
+          double sh = _userPageData.selfInfo.length / 3;
+          if(_userPageData.selfInfo.length % 3 > 1) {
+            sh = sh + 1;
+
+
+          }
+          selfInfoHeight =  sh.toInt() * 107.0;
         }
       });
     });
@@ -172,7 +193,7 @@ class _UserMainPage extends State<UserMainPage>
                 child: new Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(top: 19, left: 30, right: 30),
-                    height: 214,
+                    height: classInfoHeight,
                     child: GridView.builder(
                         itemCount: _userPageData.classInfo.length,
                         physics: new NeverScrollableScrollPhysics(),
@@ -217,7 +238,7 @@ class _UserMainPage extends State<UserMainPage>
                 child: new Container(
                     width: double.infinity,
                     margin: EdgeInsets.only(top: 19, left: 30, right: 30),
-                    height: 147,
+                    height: selfInfoHeight,
                     child: GridView.builder(
                         itemCount: _userPageData.selfInfo.length,
                         physics: new NeverScrollableScrollPhysics(),
