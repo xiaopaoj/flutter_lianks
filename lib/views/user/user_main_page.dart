@@ -23,9 +23,9 @@ class _UserMainPage extends State<UserMainPage>
 
   List<Widget> mTabView = []; //使用widget的形式
 
-  double classInfoHeight = 214;
+  double classInfoHeight = 107;
 
-  double selfInfoHeight = 214;
+  double selfInfoHeight = 107;
 
   @override
   void initState() {
