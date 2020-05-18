@@ -30,7 +30,7 @@ class _ProductListPage extends State<ProductListPage> {
 
   List<Product> _recommendList = [];
 
-  Page _page;
+  PageBean _page;
 
   int _pageNum = 1;
 

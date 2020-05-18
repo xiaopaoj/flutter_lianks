@@ -21,7 +21,7 @@ class _MyCollectionProductPage extends State<MyCollectionProductPage> {
 
   String _choice = "0";
 
-  Page _page;
+  PageBean _page;
 
   int _pageNum = 1;
 

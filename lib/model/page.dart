@@ -1,5 +1,5 @@
 
-class Page {
+class PageBean {
   List<dynamic> dataList;
   int pageNum;
   int pageSize;
@@ -7,9 +7,9 @@ class Page {
   int size;
   int totalRows;
 
-  static Page fromMap(Map<String, dynamic> map) {
+  static PageBean fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
-    Page pageBean = Page();
+    PageBean pageBean = PageBean();
     pageBean.dataList = List()..addAll(
       (map['dataList'] as List ?? []).map((o) => o)
     );

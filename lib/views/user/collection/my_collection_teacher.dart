@@ -17,7 +17,7 @@ class _MyCollectionTeacher extends State<MyCollectionTeacher> {
 
   ScrollController _scrollController;
 
-  Page _page;
+  PageBean _page;
 
   int _pageNum = 1;
 

@@ -24,7 +24,7 @@ class _MyProductListPage extends State<MyProductListPage> {
 
   ScrollController _scrollController = new ScrollController();
 
-  Page _page;
+  PageBean _page;
 
   int _pageNum = 1;
 

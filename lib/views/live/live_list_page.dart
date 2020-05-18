@@ -28,7 +28,7 @@ class _LiveListPage extends State<LiveListPage> {
 
   LivingBean _living;
 
-  Page _page;
+  PageBean _page;
 
   int _pageNum = 1;
 

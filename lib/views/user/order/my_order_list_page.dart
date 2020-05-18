@@ -20,7 +20,7 @@ class _MyOrderListPage extends State<MyOrderListPage> {
 
   ScrollController _scrollController;
 
-  Page _page;
+  PageBean _page;
 
   int _pageNum = 1;
 

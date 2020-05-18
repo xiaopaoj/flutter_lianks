@@ -29,7 +29,7 @@ dependencies:
   flutter_swiper : 1.1.6
   cookie_jar: ^1.0.0
   dio: ^3.0.9
-  path_provider: ^1.1.0
+  path_provider: 1.6.1
   webview_flutter: ^0.3.21
   fluttertoast: ^4.0.0
   fluwx: ^2.0.8+3

@@ -23,7 +23,7 @@ class DataUtils {
     }
   }
 
-  static Future<Page> getLiveList(int pageNum, int pageSize, int liveType,
+  static Future<PageBean> getLiveList(int pageNum, int pageSize, int liveType,
       int isPast) async {
     var response = await NetUtils.get(Api.LIVE_LIST, {
       "pageNum" : pageNum,
@@ -32,7 +32,7 @@ class DataUtils {
       "isPast" : isPast,
     });
     try {
-      Page page = Page.fromMap(response['data']);
+      PageBean page = PageBean.fromMap(response['data']);
       return page;
     } catch (err) {
       return response['message'];
@@ -65,7 +65,7 @@ class DataUtils {
     }
   }
 
-  static Future<Page> getProductList(int pageNum, int pageSize, int teacherId,
+  static Future<PageBean> getProductList(int pageNum, int pageSize, int teacherId,
       int productType, int courseType) async {
     var response = await NetUtils.get(Api.PRODUCT_LIST, {
       "pageNum" : pageNum,
@@ -75,7 +75,7 @@ class DataUtils {
       "courseType" : courseType,
     });
     try {
-      Page page = Page.fromMap(response['data']);
+      PageBean page = PageBean.fromMap(response['data']);
       return page;
     } catch (err) {
       return response['message'];
@@ -95,7 +95,7 @@ class DataUtils {
     }
   }
 
-  static Future<Page> getTeacherList(int pageNum, int pageSize, int teacherType,
+  static Future<PageBean> getTeacherList(int pageNum, int pageSize, int teacherType,
       String keyword) async {
     var response = await NetUtils.get(Api.TEACHER_LIST, {
       "pageNum" : pageNum,
@@ -104,7 +104,7 @@ class DataUtils {
       "keyword" : keyword,
     });
     try {
-      Page page = Page.fromMap(response['data']);
+      PageBean page = PageBean.fromMap(response['data']);
       return page;
     } catch (err) {
       return response['message'];
@@ -152,7 +152,7 @@ class DataUtils {
     }
   }
 
-  static Future<Page> getMyProductList(int pageNum, int pageSize, int courseType,
+  static Future<PageBean> getMyProductList(int pageNum, int pageSize, int courseType,
       int productType) async {
     var response = await NetUtils.get(Api.MY_PRODUCT_LIST, {
       "pageNum" : pageNum,
@@ -161,7 +161,7 @@ class DataUtils {
       "courseType" : courseType,
     });
     try {
-      Page page = Page.fromMap(response['data']);
+      PageBean page = PageBean.fromMap(response['data']);
       return page;
     } catch (err) {
       return response['message'];
@@ -180,7 +180,7 @@ class DataUtils {
     }
   }
 
-  static Future<Page> getCollectionsList(int pageNum, int pageSize, int sourceType,
+  static Future<PageBean> getCollectionsList(int pageNum, int pageSize, int sourceType,
       int productType) async {
     var response = await NetUtils.get(Api.COLLECTIONS_LIST, {
       "pageNum" : pageNum,
@@ -189,14 +189,14 @@ class DataUtils {
       "productType" : productType,
     });
     try {
-      Page page = Page.fromMap(response['data']);
+      PageBean page = PageBean.fromMap(response['data']);
       return page;
     } catch (err) {
       return response['message'];
     }
   }
 
-  static Future<Page> getMyOrderList(int pageNum, int pageSize,
+  static Future<PageBean> getMyOrderList(int pageNum, int pageSize,
       int orderStatus) async {
     var response = await NetUtils.get(Api.MY_ORDERS_LIST, {
       "pageNum" : pageNum,
@@ -204,7 +204,7 @@ class DataUtils {
       "orderStatus" : orderStatus,
     });
     try {
-      Page page = Page.fromMap(response['data']);
+      PageBean page = PageBean.fromMap(response['data']);
       return page;
     } catch (err) {
       return response['message'];
