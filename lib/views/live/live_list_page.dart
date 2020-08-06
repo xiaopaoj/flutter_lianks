@@ -1,9 +1,12 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutterapp/application.dart';
 import 'package:flutterapp/model/live_class.dart';
 import 'package:flutterapp/model/live_top.dart';
 import 'package:flutterapp/model/page.dart';
+import 'package:flutterapp/routes/routes.dart';
 import 'package:flutterapp/utils/data_utils.dart';
 import 'package:flutterapp/views/live/live_class_page.dart';
 import 'package:flutterapp/views/live/live_top_page.dart';
@@ -167,9 +170,19 @@ class _LiveListPage extends State<LiveListPage> {
             itemHeight: 212,
             itemCount: _bannerList.length,
             itemBuilder: (BuildContext context, int index) {
-              return new Image.network(
-                _bannerList[index].imgUrl,
-                fit: BoxFit.fill,
+              return new GestureDetector(
+                onTap: (){
+                  Application.router.navigateTo(context,
+                    '${Routes.webDetail}?url=${Uri.encodeComponent(
+                        _bannerList[index].linkUrl)}&title=${Uri.encodeComponent(
+                        _bannerList[index].title)}&showShare=1',
+                    transition: TransitionType.nativeModal,
+                  );
+                },
+                child: new Image.network(
+                  _bannerList[index].imgUrl,
+                  fit: BoxFit.fill,
+                ),
               );
             },
             pagination: new SwiperPagination(),

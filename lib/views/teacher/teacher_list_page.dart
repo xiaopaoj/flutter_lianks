@@ -1,13 +1,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutterapp/model/page.dart';
-import 'package:flutterapp/model/product.dart';
 import 'package:flutterapp/model/teacher.dart';
 import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/product/product_class_page.dart';
 import 'package:flutterapp/views/teacher/teacher_page.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class TeacherListPage extends StatefulWidget {
 
@@ -22,7 +20,9 @@ class TeacherListPage extends StatefulWidget {
 class _TeacherListPage extends State<TeacherListPage> {
 
 
-  ScrollController _scrollController = new ScrollController();
+//  ScrollController _scrollController = new ScrollController();
+
+  RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   PageBean _page;
 
@@ -32,6 +32,8 @@ class _TeacherListPage extends State<TeacherListPage> {
 
   List<dynamic> _list = [];
 
+  bool reload = false;
+
   @override
   void initState() {
     super.initState();
@@ -40,29 +42,56 @@ class _TeacherListPage extends State<TeacherListPage> {
 
   @override
   void dispose() {
-    _scrollController?.dispose();
+    _refreshController?.dispose();
     super.dispose();
   }
 
-  void _getList() async {
+  void _getList() {
+    if(reload) {
+      return;
+    }
+    reload = true;
     DataUtils.getTeacherList(_pageNum, _pageSize, widget.teacherType, null).then((r) {
       if(mounted) {
         setState(() {
           _page = r;
-          _list.addAll(_page.dataList);
+          if(r.dataList.length == 0) {
+            _refreshController.loadNoData();
+          } else {
+            _list.addAll(_page.dataList);
+            _refreshController.refreshCompleted();
+            _refreshController.loadComplete();
+          }
+          reload = false;
         });
       }
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return new RefreshIndicator(
-      color: Color.fromRGBO(244, 245, 247, 1),
+
+    return  new SmartRefresher(
+//      color: Color.fromRGBO(244, 245, 247, 1),
+      enablePullDown: true,
+      enablePullUp: true,
+      header: ClassicHeader(
+        releaseText: "下拉刷新",
+        canTwoLevelText: "abc",
+        refreshingText: "刷新中",
+        completeText: '刷新完成',
+        failedText: '刷新失败',
+        idleText: '下拉刷新',
+      ),
+      footer: ClassicFooter(
+        canLoadingText: "上拉加载更多",
+        loadingText: "加载中...",
+        noDataText: "加载完了",
+        failedText: '加载失败',
+        idleText: '上拉加载更多',
+      ),
       child: new CustomScrollView(
         physics: new AlwaysScrollableScrollPhysics(),
-        controller: _scrollController,
         slivers: <Widget>[
           null != _list ?
           new SliverList(
@@ -77,18 +106,21 @@ class _TeacherListPage extends State<TeacherListPage> {
 
         ],
       ),
-      onRefresh: _handleRefresh,
+      controller: _refreshController,
+      onRefresh: () async {
+        await Future.delayed(Duration(seconds: 2), () {
+          _pageNum = 1;
+          _list = [];
+          _getList();
+        });
+      },
+      onLoading: () async {
+        await Future.delayed(Duration(seconds: 2), () {
+          _pageNum = _pageNum + 1;
+          _getList();
+        });
+      },
     );
   }
 
-
-  Future<Null> _handleRefresh() async {
-
-    await Future.delayed(Duration(seconds: 1), () {
-      _pageNum = 1;
-      _list = [];
-      _getList();
-    });
-
-  }
 }
