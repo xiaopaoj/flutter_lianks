@@ -457,7 +457,7 @@ class _UserMainPage extends State<UserMainPage>
       url = url.replaceAll("LIANKS_WH://OpenWebView/URL=", "");
 
       Application.router.navigateTo(context,
-        '${Routes.webDetail}?url=${Uri.encodeComponent(url)}&title=${Uri.encodeComponent(bean.title)}',
+        '${AppRoutes.webDetail}?url=${Uri.encodeComponent(url)}&title=${Uri.encodeComponent(bean.title)}',
         transition: TransitionType.nativeModal,
       );
     } else if(url.contains("LIANKS_NH://")) {
@@ -467,7 +467,7 @@ class _UserMainPage extends State<UserMainPage>
         case "OpenMyTeacherClass":
         //教师培训
           Application.router.navigateTo(context,
-            '${Routes.myProduct}?title=${Uri.encodeComponent(
+            '${AppRoutes.myProduct}?title=${Uri.encodeComponent(
                 bean.title)}&type=2',
             transition: TransitionType.nativeModal,
           );
@@ -475,7 +475,7 @@ class _UserMainPage extends State<UserMainPage>
         case "OpenMyWorkShopClass":
         //工作坊
           Application.router.navigateTo(context,
-            '${Routes.myProduct}?title=${Uri.encodeComponent(
+            '${AppRoutes.myProduct}?title=${Uri.encodeComponent(
                 bean.title)}&type=1',
             transition: TransitionType.nativeModal,
           );
@@ -483,7 +483,7 @@ class _UserMainPage extends State<UserMainPage>
         case "OpenMyMiniClass":
         //小班课
           Application.router.navigateTo(context,
-            '${Routes.myProduct}?title=${Uri.encodeComponent(
+            '${AppRoutes.myProduct}?title=${Uri.encodeComponent(
                 bean.title)}&type=4',
             transition: TransitionType.nativeModal,
           );
@@ -491,7 +491,7 @@ class _UserMainPage extends State<UserMainPage>
         case "OpenMyMeetingClass":
         //瑜伽大会
           Application.router.navigateTo(context,
-            '${Routes.myProduct}?title=${Uri.encodeComponent(
+            '${AppRoutes.myProduct}?title=${Uri.encodeComponent(
                 bean.title)}&type=5',
             transition: TransitionType.nativeModal,
           );
@@ -499,21 +499,21 @@ class _UserMainPage extends State<UserMainPage>
         case "OpenMyFavoritesClass":
         //收藏
           Application.router.navigateTo(context,
-            '${Routes.myCollectionProduct}',
+            '${AppRoutes.myCollectionProduct}',
             transition: TransitionType.nativeModal,
           );
           break;
         case "OpenMyFavoritesTeacher":
         //收藏
           Application.router.navigateTo(context,
-            '${Routes.myCollectionTeacher}',
+            '${AppRoutes.myCollectionTeacher}',
             transition: TransitionType.nativeModal,
           );
           break;
         case "OpenMyOrderList":
         //订单
           Application.router.navigateTo(context,
-            '${Routes.myOrder}',
+            '${AppRoutes.myOrder}',
             transition: TransitionType.nativeModal,
           );
           break;

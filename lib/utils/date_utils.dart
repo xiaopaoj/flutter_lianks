@@ -1,4 +1,4 @@
-class DateUtils {
+class MyDateUtils {
 
   static String dateFormat(int date){
     DateTime start = DateTime.fromMicrosecondsSinceEpoch(date * 1000);

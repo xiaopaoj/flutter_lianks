@@ -27,7 +27,7 @@ class _ProductClassPage extends State<ProductClassPage> {
     return new GestureDetector(
       onTap: (){
         Application.router.navigateTo(context,
-          '${Routes.webDetail}?url=${Uri.encodeComponent(
+          '${AppRoutes.webDetail}?url=${Uri.encodeComponent(
               widget.product.detailUrl)}&title=${Uri.encodeComponent(
               widget.product.productName)}&showShare=1',
           transition: TransitionType.nativeModal,

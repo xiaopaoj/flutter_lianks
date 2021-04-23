@@ -81,7 +81,7 @@ class _AppHomePage extends State<AppHomePage>
 
     Application.eventBus.on<NoLoginEvent>().listen((event) {
       print('接收到的 event 没有登录');
-      Application.router.navigateTo(context, '${Routes.login}',
+      Application.router.navigateTo(context, '${AppRoutes.login}',
         transition: TransitionType.nativeModal,
       );
     });

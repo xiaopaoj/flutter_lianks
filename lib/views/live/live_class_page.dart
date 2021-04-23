@@ -30,7 +30,7 @@ class _LivingClassPage extends State<LivingClassPage> {
     return new GestureDetector(
       onTap: (){
         Application.router.navigateTo(context,
-          '${Routes.webDetail}?url=${Uri.encodeComponent(
+          '${AppRoutes.webDetail}?url=${Uri.encodeComponent(
               widget.liveClass.detailUrl)}&title=${Uri.encodeComponent(
               widget.liveClass.title)}&showShare=1',
           transition: TransitionType.nativeModal,

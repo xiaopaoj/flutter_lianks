@@ -173,7 +173,7 @@ class _LiveListPage extends State<LiveListPage> {
               return new GestureDetector(
                 onTap: (){
                   Application.router.navigateTo(context,
-                    '${Routes.webDetail}?url=${Uri.encodeComponent(
+                    '${AppRoutes.webDetail}?url=${Uri.encodeComponent(
                         _bannerList[index].linkUrl)}&title=${Uri.encodeComponent(
                         _bannerList[index].title)}&showShare=1',
                     transition: TransitionType.nativeModal,

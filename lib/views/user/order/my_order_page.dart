@@ -47,7 +47,7 @@ class _MyOrderPage extends State<MyOrderPage> {
           new Positioned(
             top: 15,
             left: 12,
-            child: new Text(DateUtils.dateFormat(widget.orderList.createTime),
+            child: new Text(MyDateUtils.dateFormat(widget.orderList.createTime),
               style: new TextStyle(
                 fontSize: 10,
                 color: Color.fromRGBO(155, 155, 155, 1),
@@ -214,7 +214,7 @@ class _MyOrderPage extends State<MyOrderPage> {
                   ),
                   onPressed: () {
                     Application.router.navigateTo(context,
-                      '${Routes.webDetail}?url=${Uri.encodeComponent(widget.orderList.detailUrl)}&title=${Uri.encodeComponent("订单详情")}',
+                      '${AppRoutes.webDetail}?url=${Uri.encodeComponent(widget.orderList.detailUrl)}&title=${Uri.encodeComponent("订单详情")}',
                       transition: TransitionType.nativeModal,
                     );
                   },

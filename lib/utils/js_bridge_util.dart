@@ -32,7 +32,7 @@ class JsBridgeUtil {
         // 查看回放
         List content = jsBridge.data['content'];
         Application.router.navigateTo(context,
-          '${Routes.liveVideo}?url=${Uri.encodeComponent(
+          '${AppRoutes.liveVideo}?url=${Uri.encodeComponent(
               content[1])}',
           transition: TransitionType.nativeModal,
         );

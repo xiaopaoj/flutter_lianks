@@ -2,7 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_lianks/routes/routes_handler.dart';
 
 
-class Routes {
+class AppRoutes {
   static String webDetail = "/webDetail";
   static String login = "/login";
   static String myProduct = "/myProduct";
