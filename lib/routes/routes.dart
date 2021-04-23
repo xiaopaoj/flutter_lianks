@@ -11,7 +11,7 @@ class AppRoutes {
   static String myOrder = "/myOrderHandler";
   static String liveVideo = "/LiveVideoHandler";
 
-  static void configureRoutes(Router router) {
+  static void configureRoutes(FluroRouter router) {
     router.define(webDetail, handler: webDetailHandler);
     router.define(login, handler: loginHandler);
     router.define(myProduct, handler: myProductHandler);

@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
   // This widget is the root of your application.
 
   MyApp(){
-    final router = new Router();
+    final router = new FluroRouter();
     AppRoutes.configureRoutes(router);
     // 这里设置项目环境
     Application.router = router;
