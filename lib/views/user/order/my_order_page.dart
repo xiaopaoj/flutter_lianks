@@ -1,9 +1,9 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/order_list.dart';
-import 'package:flutterapp/routes/routes.dart';
-import 'package:flutterapp/utils/date_utils.dart';
+import 'package:flutter_lianks/model/order_list.dart';
+import 'package:flutter_lianks/routes/routes.dart';
+import 'package:flutter_lianks/utils/date_utils.dart';
 
 import '../../../application.dart';
 

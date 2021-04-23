@@ -1,5 +1,5 @@
 import 'package:fluro/fluro.dart';
-import 'package:flutterapp/routes/routes_handler.dart';
+import 'package:flutter_lianks/routes/routes_handler.dart';
 
 
 class Routes {

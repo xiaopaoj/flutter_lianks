@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import 'package:flutterapp/application.dart';
+import 'package:flutter_lianks/application.dart';
 
 class LoadingWidget extends StatelessWidget{
 

@@ -2,14 +2,14 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutterapp/application.dart';
-import 'package:flutterapp/model/live_class.dart';
-import 'package:flutterapp/model/live_top.dart';
-import 'package:flutterapp/model/page.dart';
-import 'package:flutterapp/routes/routes.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/live/live_class_page.dart';
-import 'package:flutterapp/views/live/live_top_page.dart';
+import 'package:flutter_lianks/application.dart';
+import 'package:flutter_lianks/model/live_class.dart';
+import 'package:flutter_lianks/model/live_top.dart';
+import 'package:flutter_lianks/model/page.dart';
+import 'package:flutter_lianks/routes/routes.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/views/live/live_class_page.dart';
+import 'package:flutter_lianks/views/live/live_top_page.dart';
 
 class LiveListPage extends StatefulWidget {
 

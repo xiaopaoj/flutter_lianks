@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/utils/toast_utils.dart';
+import 'package:flutter_lianks/utils/toast_utils.dart';
 import 'package:fluwx/fluwx.dart';
 
 List<ShareMenu> menuList = [];

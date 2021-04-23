@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:flutterapp/model/user_info.dart';
+import 'package:flutter_lianks/model/user_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<SharedPreferences> prefs = SharedPreferences.getInstance();

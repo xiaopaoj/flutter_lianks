@@ -1,9 +1,9 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/application.dart';
-import 'package:flutterapp/model/live_class.dart';
-import 'package:flutterapp/routes/routes.dart';
+import 'package:flutter_lianks/application.dart';
+import 'package:flutter_lianks/model/live_class.dart';
+import 'package:flutter_lianks/routes/routes.dart';
 
 class LivingClassPage extends StatefulWidget {
 

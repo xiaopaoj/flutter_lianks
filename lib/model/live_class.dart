@@ -1,7 +1,7 @@
 
 import 'dart:core';
 
-import 'package:flutterapp/model/live_top.dart';
+import 'package:flutter_lianks/model/live_top.dart';
 
 class LiveClass {
 

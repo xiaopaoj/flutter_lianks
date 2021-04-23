@@ -2,10 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutterapp/model/page.dart';
-import 'package:flutterapp/model/product.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/product/product_class_page.dart';
+import 'package:flutter_lianks/model/page.dart';
+import 'package:flutter_lianks/model/product.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/views/product/product_class_page.dart';
 
 class MyProductListPage extends StatefulWidget {
 

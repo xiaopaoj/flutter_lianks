@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/dict.dart';
-import 'package:flutterapp/model/live_class.dart';
-import 'package:flutterapp/model/page.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/live/live_class_page.dart';
+import 'package:flutter_lianks/model/dict.dart';
+import 'package:flutter_lianks/model/live_class.dart';
+import 'package:flutter_lianks/model/page.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/views/live/live_class_page.dart';
 
 class MyCollectionProductPage extends StatefulWidget {
 

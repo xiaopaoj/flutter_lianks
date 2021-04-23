@@ -1,11 +1,11 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/event/event_model.dart';
-import 'package:flutterapp/model/user_page_data.dart';
-import 'package:flutterapp/routes/routes.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/utils/toast_utils.dart';
+import 'package:flutter_lianks/event/event_model.dart';
+import 'package:flutter_lianks/model/user_page_data.dart';
+import 'package:flutter_lianks/routes/routes.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/utils/toast_utils.dart';
 
 import '../../application.dart';
 

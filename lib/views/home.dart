@@ -1,12 +1,12 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/event/event_model.dart';
-import 'package:flutterapp/routes/routes.dart';
-import 'package:flutterapp/utils/local_storage_utils.dart';
-import 'package:flutterapp/views/live/live_main_page.dart';
-import 'package:flutterapp/views/product/product_main_page.dart';
-import 'package:flutterapp/views/teacher/teacher_main_page.dart';
-import 'package:flutterapp/views/user/user_main_page.dart';
+import 'package:flutter_lianks/event/event_model.dart';
+import 'package:flutter_lianks/routes/routes.dart';
+import 'package:flutter_lianks/utils/local_storage_utils.dart';
+import 'package:flutter_lianks/views/live/live_main_page.dart';
+import 'package:flutter_lianks/views/product/product_main_page.dart';
+import 'package:flutter_lianks/views/teacher/teacher_main_page.dart';
+import 'package:flutter_lianks/views/user/user_main_page.dart';
 
 import '../application.dart';
 

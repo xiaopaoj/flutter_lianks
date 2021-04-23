@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/teacher/teacher_list_page.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/views/teacher/teacher_list_page.dart';
 
 import '../../application.dart';
 

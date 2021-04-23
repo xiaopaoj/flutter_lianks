@@ -2,8 +2,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/product.dart';
-import 'package:flutterapp/routes/routes.dart';
+import 'package:flutter_lianks/model/product.dart';
+import 'package:flutter_lianks/routes/routes.dart';
 
 import '../../application.dart';
 

@@ -1,13 +1,13 @@
 
-import 'package:flutterapp/api.dart';
-import 'package:flutterapp/model/dict.dart';
-import 'package:flutterapp/model/live_top.dart';
-import 'package:flutterapp/model/page.dart';
-import 'package:flutterapp/model/product.dart';
-import 'package:flutterapp/model/user_info.dart';
-import 'package:flutterapp/model/user_page_data.dart';
-import 'package:flutterapp/utils/net_utils.dart';
-import 'package:flutterapp/utils/toast_utils.dart';
+import 'package:flutter_lianks/api.dart';
+import 'package:flutter_lianks/model/dict.dart';
+import 'package:flutter_lianks/model/live_top.dart';
+import 'package:flutter_lianks/model/page.dart';
+import 'package:flutter_lianks/model/product.dart';
+import 'package:flutter_lianks/model/user_info.dart';
+import 'package:flutter_lianks/model/user_page_data.dart';
+import 'package:flutter_lianks/utils/net_utils.dart';
+import 'package:flutter_lianks/utils/toast_utils.dart';
 
 import 'local_storage_utils.dart';
 

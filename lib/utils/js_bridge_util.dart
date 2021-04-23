@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:fluro/fluro.dart';
-import 'package:flutterapp/application.dart';
-import 'package:flutterapp/routes/routes.dart';
-import 'package:flutterapp/views/web/share_page.dart';
+import 'package:flutter_lianks/application.dart';
+import 'package:flutter_lianks/routes/routes.dart';
+import 'package:flutter_lianks/views/web/share_page.dart';
 
 import 'Js_bridge.dart';
 import 'toast_utils.dart';

@@ -1,10 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/application.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/utils/local_storage_utils.dart';
-import 'package:flutterapp/utils/toast_utils.dart';
+import 'package:flutter_lianks/application.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/utils/local_storage_utils.dart';
+import 'package:flutter_lianks/utils/toast_utils.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../utils/js_bridge_util.dart';

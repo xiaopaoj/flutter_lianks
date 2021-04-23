@@ -3,10 +3,10 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutterapp/application.dart';
-import 'package:flutterapp/model/user_info.dart';
-import 'package:flutterapp/routes/routes.dart';
-import 'package:flutterapp/views/home.dart';
+import 'package:flutter_lianks/application.dart';
+import 'package:flutter_lianks/model/user_info.dart';
+import 'package:flutter_lianks/routes/routes.dart';
+import 'package:flutter_lianks/views/home.dart';
 import 'package:fluwx/fluwx.dart';
 
 import 'event/event_model.dart';

@@ -5,10 +5,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterapp/event/event_model.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/utils/reg_utils.dart';
-import 'package:flutterapp/utils/toast_utils.dart';
+import 'package:flutter_lianks/event/event_model.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/utils/reg_utils.dart';
+import 'package:flutter_lianks/utils/toast_utils.dart';
 
 import '../../application.dart';
 import '../home.dart';

@@ -1,10 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp/model/page.dart';
-import 'package:flutterapp/model/teacher.dart';
-import 'package:flutterapp/utils/data_utils.dart';
-import 'package:flutterapp/views/teacher/teacher_page.dart';
+import 'package:flutter_lianks/model/page.dart';
+import 'package:flutter_lianks/model/teacher.dart';
+import 'package:flutter_lianks/utils/data_utils.dart';
+import 'package:flutter_lianks/views/teacher/teacher_page.dart';
 
 class MyCollectionTeacher extends StatefulWidget {
 
