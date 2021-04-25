@@ -30,7 +30,7 @@ dependencies:
   cookie_jar: ^1.0.0
   dio: ^3.0.9
   path_provider: 1.6.1
-  webview_flutter: ^0.3.21
+  webview_flutter: ^2.0.4
   fluttertoast: ^4.0.0
   fluwx: ^3.4.2
   shared_preferences: ^0.5.7

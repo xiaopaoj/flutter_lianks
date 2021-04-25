@@ -39,7 +39,8 @@ class JsBridgeUtil {
       }else {
         ToastUtils.showMessage("其他调用");
       }
-
+    } else {
+      print("jsBridge.method ${jsBridge.method}");
     }
     jsBridge.success?.call();
   }

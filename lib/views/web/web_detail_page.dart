@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lianks/application.dart';
@@ -32,7 +34,7 @@ class _WebDetailPage extends State<WebDetailPage> {
   @override
   void initState() {
     super.initState();
-
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 
   wxShareSession(){
@@ -48,6 +50,7 @@ class _WebDetailPage extends State<WebDetailPage> {
           String jsonStr = msg.message;
           JsBridgeUtil.executeMethod(context, JsBridgeUtil.parseJson(jsonStr));
     });
+
 
     return Scaffold(
       appBar: new AppBar(
@@ -90,8 +93,12 @@ class _WebDetailPage extends State<WebDetailPage> {
         onPageFinished: (String value) {
         },
         javascriptChannels: <JavascriptChannel>[
-          _jsBridge(context) // 与h5 通信
+          _jsBridge(context),
         ].toSet(),
+        navigationDelegate: (NavigationRequest request) {
+          print('allowing navigation to $request');
+          return NavigationDecision.navigate;
+        },
       ),
     );
   }

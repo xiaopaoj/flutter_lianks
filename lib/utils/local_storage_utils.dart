@@ -19,10 +19,9 @@ class LocalStorageUtils {
   static Future<UserInfo> getUserInfo(){
     return prefs.then((r) {
       String jsonStr = r.getString("LOCAL_STORAGE_USER_INFO") ?? "";
-      if(jsonStr == null) {
-        return new UserInfo();
+      if(jsonStr == null || jsonStr.length == 0) {
+        return null;
       }
-      print("onvolume $jsonStr");
       return UserInfo.fromMap(jsonDecode(jsonStr));
     });
   }
