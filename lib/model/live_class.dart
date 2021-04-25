@@ -46,7 +46,7 @@ class LiveClass {
     }
 
     liveClass.thirdLabel = map['dateTimeStr'] + "   " + map['payCount'].toString() +  "人报名";
-    liveClass.originalPrice = map['originalPrice'];
+    liveClass.originalPrice = map['originalPrice'].toString();
     liveClass.standardPrice = map['standardPrice'];
     liveClass.detailUrl = map['detailUrl'];
     liveClass.title = title;
