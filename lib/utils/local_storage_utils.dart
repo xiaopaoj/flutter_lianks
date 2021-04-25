@@ -22,6 +22,7 @@ class LocalStorageUtils {
       if(jsonStr == null) {
         return new UserInfo();
       }
+      print("onvolume $jsonStr");
       return UserInfo.fromMap(jsonDecode(jsonStr));
     });
   }

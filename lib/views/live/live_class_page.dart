@@ -75,12 +75,12 @@ class _LivingClassPage extends State<LivingClassPage> {
                       child: new Text(widget.liveClass.teacherName,
                         style: new TextStyle(
                           color: Color.fromRGBO(255, 255, 255, 1),
-                          fontSize: 8,
+                          fontSize: 10,
                           fontWeight: FontWeight.w600,
                           fontStyle: FontStyle.italic
                         ),
                       ),
-                      bottom: 12,
+                      bottom: 14,
                       left: 18,
                     ),
                     null == widget.liveClass.tagName || "" == widget.liveClass.tagName
@@ -97,7 +97,7 @@ class _LivingClassPage extends State<LivingClassPage> {
                             child: new Text(widget.liveClass.tagName,
                               style: new TextStyle(
                                 color: Color.fromRGBO(246, 246, 246, 1),
-                                fontSize: 6,
+                                fontSize: 8,
                               ),
                             ),
                           ),
