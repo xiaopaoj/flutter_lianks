@@ -37,7 +37,7 @@ class _LivingClassPage extends State<LivingClassPage> {
         );
       },
       child: new Container(
-        height: 87,
+        height: 90,
         color: Color.fromRGBO(255, 255, 255, 1),
         width: MediaQuery.of(context).size.width,
         child: new Row(
@@ -49,8 +49,8 @@ class _LivingClassPage extends State<LivingClassPage> {
                   children: <Widget>[
                     new Container(
                       child: new Image.network(widget.liveClass.showImage,
-                        width: 112,
-                        height: 63,
+                        width: 118,
+                        height: 72,
                         fit: BoxFit.fill,
                       ),
                       margin: EdgeInsets.only(left: 12, top: 12, right: 0, bottom: 12),
@@ -74,14 +74,16 @@ class _LivingClassPage extends State<LivingClassPage> {
                     new Positioned(
                       child: new Text(widget.liveClass.teacherName,
                         style: new TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontSize: 10
+                          color: Color.fromRGBO(255, 255, 255, 1),
+                          fontSize: 8,
+                          fontWeight: FontWeight.w600,
+                          fontStyle: FontStyle.italic
                         ),
                       ),
-                      bottom: 13,
-                      left: 15,
+                      bottom: 12,
+                      left: 18,
                     ),
-                    null == widget.liveClass.tagName
+                    null == widget.liveClass.tagName || "" == widget.liveClass.tagName
                         ? new Container() :
                     new Positioned(
                       child: new Opacity(
@@ -95,14 +97,14 @@ class _LivingClassPage extends State<LivingClassPage> {
                             child: new Text(widget.liveClass.tagName,
                               style: new TextStyle(
                                 color: Color.fromRGBO(246, 246, 246, 1),
-                                fontSize: 9,
+                                fontSize: 6,
                               ),
                             ),
                           ),
                         ),
                       ),
                       bottom: 13,
-                      left: 77,
+                      right: 0,
                     ),
                   ],
                 )
@@ -110,11 +112,11 @@ class _LivingClassPage extends State<LivingClassPage> {
             new Expanded(
                 flex: 67,
                 child: new Container(
-                  height: 63,
+                  height: 72,
                   child: new Column(
                     children: <Widget>[
                       new Container(
-                        height: 20,
+                        height: 23,
                         width: double.infinity,
                         margin: EdgeInsets.only(bottom: 4, left: 9, top: 0),
                         child: new Text(widget.liveClass.firstLabel,
@@ -125,7 +127,7 @@ class _LivingClassPage extends State<LivingClassPage> {
                         ),
                       ),
                       new Container(
-                        height: 17,
+                        height: 20,
                         width: double.infinity,
                         margin: EdgeInsets.only(bottom: 5, left: 8),
                         child: new Text(widget.liveClass.secondLabel,
@@ -137,7 +139,7 @@ class _LivingClassPage extends State<LivingClassPage> {
                       ),
                       new Container(
                         child: new Container(
-                          height: 17,
+                          height: 20,
                           width: double.infinity,
                           margin: EdgeInsets.only(left: 8),
                           child: new Stack(
