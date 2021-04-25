@@ -57,7 +57,8 @@ class _MyAppState extends State<MyApp> {
     await registerWxApi(
       appId: "wxef1bca1fa60dd05c",
       doOnAndroid: true,
-      doOnIOS: true);
+      doOnIOS: true,
+      universalLink: 'https://www.lianks.com');
     var result = await isWeChatInstalled;
     print("is installed $result");
   }

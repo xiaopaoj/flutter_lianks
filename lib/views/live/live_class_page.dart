@@ -49,7 +49,7 @@ class _LivingClassPage extends State<LivingClassPage> {
                   children: <Widget>[
                     new Container(
                       child: new Image.network(widget.liveClass.showImage,
-                        width: 118,
+                        width: 126,
                         height: 72,
                         fit: BoxFit.fill,
                       ),
@@ -61,7 +61,7 @@ class _LivingClassPage extends State<LivingClassPage> {
                       child: new Opacity(
                         opacity: 0.1,
                         child: new Container(
-                          width: 112,
+                          width: 126,
                           height: 13,
                           color: Color.fromRGBO(0, 0, 0, 1),
                         ),
