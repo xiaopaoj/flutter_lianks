@@ -11,12 +11,10 @@ import 'package:fluwx/fluwx.dart';
 
 import 'event/event_model.dart';
 
-
-
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
 
-  MyApp(){
+  MyApp() {
     final router = new FluroRouter();
     AppRoutes.configureRoutes(router);
     // 这里设置项目环境
@@ -28,8 +26,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  _MyAppState(){
+  _MyAppState() {
     final eventBus = new EventBus();
     Application.eventBus = eventBus;
   }
@@ -39,12 +36,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _initFluwx();
 
-
     weChatResponseEventHandler.listen((res) {
-      if (res is WeChatPaymentResponse) {
-
-
-      }
+      if (res is WeChatPaymentResponse) {}
     });
   }
 
@@ -55,18 +48,18 @@ class _MyAppState extends State<MyApp> {
 
   void _initFluwx() async {
     await registerWxApi(
-      appId: "wxef1bca1fa60dd05c",
-      doOnAndroid: true,
-      doOnIOS: true,
-      universalLink: 'https://www.lianks.com');
+        appId: "wxef1bca1fa60dd05c",
+        doOnAndroid: true,
+        doOnIOS: true,
+        universalLink: 'https://www.lianks.com');
     var result = await isWeChatInstalled;
     print("is installed $result");
   }
-  
+
   bool _isReloading = false;
 
-  Widget showWelcomeWidget(){
-    if(_isReloading) {
+  Widget showWelcomeWidget() {
+    if (_isReloading) {
       return new Container(
         color: Colors.white,
         child: Center(
@@ -76,7 +69,6 @@ class _MyAppState extends State<MyApp> {
     } else {
       return new AppHomePage();
     }
-    
   }
 
   @override
@@ -100,7 +92,8 @@ class _MyAppState extends State<MyApp> {
 
       home: new Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        body: showWelcomeWidget(),),
+        body: showWelcomeWidget(),
+      ),
       builder: (context, widget) {
         return MediaQuery(
           //设置文字大小不随系统设置改变
@@ -111,11 +104,11 @@ class _MyAppState extends State<MyApp> {
 //      onGenerateRoute: Application.router.generator,
     );
   }
-
 }
 
 void main() {
   runApp(MyApp());
-  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor:Colors.transparent);
+  SystemUiOverlayStyle systemUiOverlayStyle =
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent);
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
