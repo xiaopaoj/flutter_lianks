@@ -41,11 +41,11 @@ class _AppHomePage extends State<AppHomePage>
       'color': Colors.red,
       'icon': "icon_daoshi@3x.png",
     },
-    {
-      'text': '我的',
-      'color': Colors.yellow,
-      'icon': "icon_wode@3x.png",
-    },
+    // {
+    //   'text': '我的',
+    //   'color': Colors.yellow,
+    //   'icon': "icon_wode@3x.png",
+    // },
   ];
 
   List<BottomNavigationBarItem> _myTabs = [];
@@ -58,9 +58,9 @@ class _AppHomePage extends State<AppHomePage>
 
     tabData.forEach((r) {
       _myTabs.add(new BottomNavigationBarItem(
-          title: new Container(),
           icon: myIcon(18.0, "assets/images/icon/default/" + r['icon'],),
-          activeIcon: myIcon(22.0, "assets/images/icon/click/" + r['icon'],)
+          activeIcon: myIcon(22.0, "assets/images/icon/click/" + r['icon'],),
+          label: r['text'],
       ));
       _list.add(new Container());
     });

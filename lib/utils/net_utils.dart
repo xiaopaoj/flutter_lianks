@@ -26,7 +26,7 @@ class NetUtils {
     if(dio == null) {
       dio = new Dio(BaseOptions(connectTimeout: 30000));
       dio.interceptors.add(InterceptorsWrapper(
-        onRequest: (RequestOptions options) async {
+        onRequest: (options, handler) async {
           LocalStorageUtils.getToken().then((r) {
             if(null != r && "" != r) {
               options.headers.addAll({
@@ -36,7 +36,7 @@ class NetUtils {
           });
           return options;
         },
-        onResponse:(Response response) async {
+        onResponse:(response, handler) async {
 //          print("interceptors==============>${response.data}");
           int code = response.data['code'];
           if(code == 401) {

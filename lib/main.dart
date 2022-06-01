@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
       return new Container(
         color: Colors.white,
         child: Center(
-          child: SpinKitPouringHourglass(color: Colors.black),
+          child: SpinKitPouringHourGlass(color: Colors.black),
         ),
       );
     } else {
@@ -80,10 +80,10 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Color.fromRGBO(255, 255, 255, 1),
         primaryColorDark: Color.fromRGBO(255, 255, 255, 1),
         accentColor: Color.fromRGBO(255, 255, 255, 1),
-        textTheme: TextTheme(
-          //设置Material的默认字体样式
-          body1: TextStyle(color: Color(0xFF888888), fontSize: 16.0),
-        ),
+        // textTheme: TextTheme(
+        //   //设置Material的默认字体样式
+        //   bodyLarge: TextStyle(color: Color(0xFF888888), fontSize: 16.0),
+        // ),
         iconTheme: IconThemeData(
           color: Color(0xFF000000),
           size: 35.0,

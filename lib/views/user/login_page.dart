@@ -92,7 +92,7 @@ class _LoginPage extends State<LoginPage> {
                     controller: _validCodeController,
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
-                      WhitelistingTextInputFormatter.digitsOnly,//只输入数字
+                      FilteringTextInputFormatter.allow(RegExp("[0-9.]")),//只输入数字
                       LengthLimitingTextInputFormatter(6)//限制长度
                     ],
                     maxLines: 1,
@@ -252,7 +252,7 @@ class _LoginPage extends State<LoginPage> {
                   controller: _controller,
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
-                    WhitelistingTextInputFormatter.digitsOnly,//只输入数字
+                    FilteringTextInputFormatter.allow(RegExp("[0-9.]")),//只输入数字
                     LengthLimitingTextInputFormatter(11)//限制长度
                   ],
                   maxLines: 1,
@@ -392,26 +392,26 @@ class _LoginPage extends State<LoginPage> {
             top: 540,
           ),
 
-          !Platform.isIOS ? new Container() :
-          new Positioned(
-            child: new Container(
-              width: 190,
-              child: new OutlineButton(
-                borderSide:new BorderSide(color: Color.fromRGBO(0, 0, 0, 1)),
-                child: new Text('Sign in with Apple',
-                  style: new TextStyle(
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: 14,
-                  ),
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                ),
-                onPressed: () {},
-              ),
-            ),
-            top: 560,
-          ),
+          // !Platform.isIOS ? new Container() :
+          // new Positioned(
+          //   child: new Container(
+          //     width: 190,
+          //     child: new OutlineButton(
+          //       borderSide:new BorderSide(color: Color.fromRGBO(0, 0, 0, 1)),
+          //       child: new Text('Sign in with Apple',
+          //         style: new TextStyle(
+          //           color: Color.fromRGBO(0, 0, 0, 1),
+          //           fontSize: 14,
+          //         ),
+          //       ),
+          //       shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.all(Radius.circular(8)),
+          //       ),
+          //       onPressed: () {},
+          //     ),
+          //   ),
+          //   top: 560,
+          // ),
         ],
       ),
     );
